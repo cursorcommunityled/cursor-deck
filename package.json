@@ -1,0 +1,12 @@
+{
+  "name": "cursor-deck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cursor-branded Reveal.js deck template — generic starter + a real-world example.",
+  "scripts": {
+    "present":          "npx --yes serve@14 template -l 4321 --no-port-switching",
+    "present:template": "npx --yes serve@14 template -l 4321 --no-port-switching",
+    "present:example":  "npx --yes serve@14 examples/cursor-nexo-security -l 4321 --no-port-switching",
+    "open":             "open http://localhost:4321 || xdg-open http://localhost:4321"
+  }
+}
