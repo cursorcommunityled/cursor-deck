@@ -1,0 +1,103 @@
+---
+description: How to author and edit slides — copyable starter blocks
+globs: "**/index.html"
+alwaysApply: false
+---
+
+# Slide authoring playbook
+
+When this rule fires, you're editing a deck's `index.html`. Slides are
+linear `<section>` blocks. **Always copy the closest existing slide that
+matches the layout you want and edit its content.** Don't write a new
+slide from scratch — every existing slide is a working example with the
+right chrome.
+
+## Anatomy
+
+```html
+<section>
+  <div class="slide">                   <!-- or .slide.dark -->
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Section name</div>
+    </div>
+
+    <!-- body -->
+
+    <div class="footer">
+      <span class="left">Your Org · Session 00 · Topic</span>
+      <span>NN / MM</span>
+    </div>
+  </div>
+  <aside class="notes">Speaker notes for the S key.</aside>
+</section>
+```
+
+## Layout starters
+
+### Title (dark cover)
+
+Use for slide 1 and the closer. `.slide.dark` + `.cube-wm` watermark +
+big `.title-xl` headline.
+
+### Content + bullets
+
+Standard body slide: `.title-l` headline, `.lede` subtitle,
+`.accent-rule`, then content. See template slide 4 ("Three things change…").
+
+### Section divider (dark)
+
+Use to break the deck into chapters. Big section number in `.mono` +
+`.title-xl` heading. See template slide 3.
+
+### Megastat
+
+One enormous number + headline (240px digit). Use `.megastat` grid.
+See template slide 5.
+
+### Cards grid
+
+Use `.row-3` or `.row-4` of `.card` blocks (with `.num` + `.name` +
+`.desc`). See template slide 4 / slide 8.
+
+### Code block
+
+`.code` div with `.titlebar` (filename) + `<pre>` content. Use spans
+`.k` (keyword), `.s` (string), `.c` (comment), `.h` (highlight).
+See template slide 6.
+
+### Comparison table
+
+`.cmp` table with three columns: dimension / before / after. Pair with a
+`.callout` below for the punchline. See template slide 7.
+
+### Quote / pull-quote
+
+Centered slide with a single big quote. See template slide 9.
+
+### Closing (dark)
+
+`.slide.dark` + huge "Thanks." + speaker contact + resource list. See
+template slide 10.
+
+## Adding a slide — step by step
+
+1. Decide position. Slides are linear; insert between two existing ones.
+2. Copy the closest matching `<section>...</section>` block.
+3. Edit content inside `.slide`. Leave `.chrome` and `.footer` untouched
+   except for the eyebrow text and counter.
+4. **Bump the footer counter** on the new slide AND every following
+   slide. Update the `MM` total on every slide.
+5. Add speaker notes inside `<aside class="notes">…</aside>`.
+6. Match the logo variant: `*_LIGHT.png` on `.slide`, `*_DARK.png` on
+   `.slide.dark`.
+
+## Hard rules
+
+- ❌ Don't strip the chrome.
+- ❌ Don't hardcode hex colors — use `var(--…)`.
+- ❌ Don't skip updating the footer counter.
+- ❌ Don't use the wrong logo variant.
+- ✅ Read the closest example slide before generating.

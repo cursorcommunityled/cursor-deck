@@ -1,0 +1,65 @@
+---
+description: When to use which Cursor logo asset and how to handle co-branding
+alwaysApply: false
+---
+
+# Cursor brand assets
+
+Source of truth: `cursor-brand-assets/` (symlinked into each deck as
+`brand/`). All assets exist in PNG and SVG, in 2D and 2.5D, in light and
+dark variants.
+
+## Which logo when
+
+| Slot                 | Asset                                               | Notes                          |
+| -------------------- | --------------------------------------------------- | ------------------------------ |
+| Top-left chrome      | `Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_*.png`  | Every slide. Match light/dark. |
+| Watermark (dark slides) | `Cube/PNG/CUBE_2D_DARK.png`                      | Title + closer + section dividers. |
+| Type-only contexts   | `Wordmark/PNG/WORDMARK_*.png`                       | Rare. When horizontal lockup feels too heavy. |
+| Vertical lockup      | `Lockup Vertical/PNG/LOCKUP_VERTICAL_2D_*.png`      | Rare. When horizontal won't fit. |
+| App-icon contexts    | `App Icons/`                                        | Rare. Only for icon contexts. |
+| Speaker portrait     | `Avatars/Circle/PNG/`                               | Rare. Only when showing the AI as a character. |
+
+## Light vs dark
+
+- `.slide` (light, paper background) → `*_LIGHT.png`
+- `.slide.dark` (dark, ink background) → `*_DARK.png`
+
+Wrong variant = invisible logo. This is the most common mistake.
+
+## Hard rules
+
+- ❌ **Don't recolor the marks.** No CSS filters except the documented
+  `invert(1) brightness(1.15)` used for partner co-brand logos on dark
+  backgrounds (see `.brand-lockup .lockup-partner` in `theme.css`).
+- ❌ **Don't distort.** Keep aspect ratio. The horizontal lockup uses
+  `height: 22px; width: auto` in `.chrome .logo`.
+- ❌ **Don't crop or alter the cube.** The watermark uses `opacity:
+  0.18` already; don't modify the asset itself.
+- ❌ **Don't substitute a non-Cursor mark for the Cursor lockup.** If
+  the user wants their own logo as the primary brand, ask whether they
+  intend to fork the template or co-brand (× partner pattern).
+
+## Co-branding (Cursor × Partner)
+
+Pattern lives in `examples/cursor-nexo-security/`:
+
+```html
+<div class="brand-lockup">
+  <img class="logo" src="brand/...LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+  <span class="lockup-x" aria-hidden="true">×</span>
+  <img class="lockup-partner" src="partner.png" alt="Partner">
+</div>
+```
+
+The `.lockup-partner` class crops the image (it expects a partner logo
+with whitespace around the wordmark). On dark slides, the partner logo
+is auto-inverted via the `.slide.dark .brand-lockup .lockup-partner`
+filter.
+
+## Brand guidelines
+
+These assets are Cursor's. Use them in line with Cursor's brand
+guidelines (`https://cursor.com`). Intended for ambassador talks,
+community events, and Cursor-led webinars. Don't imply Cursor
+endorsement of arbitrary third-party content.

@@ -6,6 +6,23 @@ save, refresh.
 
 ![preview](docs/preview.png)
 
+## For AI agents
+
+If you're an AI assistant editing this repo, read [`AGENTS.md`](AGENTS.md)
+first — it's the universal brief covering slide anatomy, the chrome,
+theme tokens, brand asset rules, and the workflow for adding a slide
+without breaking the footer counters.
+
+This repo also ships:
+
+- [`CLAUDE.md`](CLAUDE.md) — Claude Code project memory
+- [`.cursor/rules/`](.cursor/rules/) — five scoped Cursor rules (auto-fire on the right files)
+- [`.github/copilot-instructions.md`](.github/copilot-instructions.md) — Copilot brief
+
+Compatible with Cursor, Claude Code, Codex, GitHub Copilot, Windsurf,
+Aider, Devin, Jules, JetBrains Junie, Zed, and anything else that reads
+`AGENTS.md`.
+
 ## What's in here
 
 Two decks, side by side:

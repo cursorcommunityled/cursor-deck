@@ -1,0 +1,49 @@
+---
+description: Theme tokens (colors, typography) for cursor-deck
+globs: "**/theme.css"
+alwaysApply: false
+---
+
+# Theme tokens
+
+All colors and fonts live under `:root` in `theme.css`. Reference them
+with `var(--…)`, never hardcode hex.
+
+## Palette
+
+| Token              | Value     | Use                                 |
+| ------------------ | --------- | ----------------------------------- |
+| `--ink`            | `#14120B` | Dark background + main text         |
+| `--ink-soft`       | `#26251E` | Slightly lighter ink                |
+| `--body`           | `#3A382E` | Body text                           |
+| `--muted`          | `#6B6960` | Secondary text                      |
+| `--subtle`         | `#9E9C90` | Tertiary text (footer, captions)    |
+| `--line`           | `#E6E5DD` | Borders, dividers                   |
+| `--paper`          | `#F7F7F4` | Light background ("latte cream")    |
+| `--white`          | `#FFFFFF` | Pure white (cards, code highlights) |
+| `--accent`         | `#5C5A52` | Warm grey accent (top stripes, rules)|
+| `--accent-soft`    | `#E6E5DD` | Soft accent for callout backgrounds |
+
+## Typography
+
+| Token         | Value                                   |
+| ------------- | --------------------------------------- |
+| `--font-sans` | `Inter` (UI, headlines, body)           |
+| `--font-mono` | `JetBrains Mono` (code, numbers, eyebrows) |
+
+## Rules
+
+- ❌ Don't add hex colors outside `:root`. New colors → new tokens.
+- ❌ Don't change a token's name once it's used in HTML — search/replace
+  across both `template/index.html` and
+  `examples/cursor-nexo-security/index.html` if you must rename.
+- ✅ To retint the deck, change `--ink` / `--paper` / `--accent` /
+  `--line`. Every component will follow.
+- ✅ When the user asks for a "different palette" or "brand colors",
+  edit `:root` only. Don't touch component CSS.
+
+## Component overrides
+
+Component classes (`.card`, `.stat`, `.code`, `.cmp`, `.callout`, …)
+already reference tokens. Don't override them at the slide level —
+extend the component class instead.

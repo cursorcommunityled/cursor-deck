@@ -1,0 +1,45 @@
+---
+description: Core conventions for cursor-deck — applies to every chat in this repo
+alwaysApply: true
+---
+
+# cursor-deck — core conventions
+
+This is a Reveal.js deck template. Pure HTML + CSS, no build step.
+
+## Stack rules
+
+- **Don't introduce React, Vite, Next.js, MDX, TypeScript, or any
+  bundler.** The zero-build setup is intentional and load-bearing for
+  community contributors.
+- **Don't add `npm install` dependencies** unless the user explicitly
+  asks. `serve` is fetched on demand via `npx`.
+- **Don't change Reveal.js options** (`Reveal.initialize({…})`) without
+  applying the same change to both `template/` and
+  `examples/cursor-nexo-security/`.
+
+## Slide chrome — required on every slide
+
+Every `<section>` must contain:
+
+1. A `.chrome` div at the top with the Cursor logo and an `.eyebrow`
+   label.
+2. A `.footer` at the bottom with the org line + `NN / MM` counter
+   (except the dark title and closer slides, which use a custom bottom
+   block).
+3. The right logo variant: `*_LIGHT.png` on `.slide`, `*_DARK.png` on
+   `.slide.dark`.
+
+When you add or remove a slide: **update the `NN / MM` counter on every
+following slide.** And update the `MM` total on every slide.
+
+## Two decks
+
+- `template/` — the generic starter. Edit this.
+- `examples/cursor-nexo-security/` — historical reference deck. Don't
+  edit unless the user explicitly asks for a correction.
+
+## Color and typography
+
+Use CSS custom properties from `theme.css`. Never hardcode hex values
+in slide content. See `theme-tokens.mdc` for the full list.

@@ -1,0 +1,78 @@
+---
+description: Workflow when the user asks to add a new slide about a topic
+alwaysApply: false
+---
+
+# Adding a slide — workflow
+
+When the user says "add a slide about X" or "add a megastat slide for Y":
+
+## Step 1 — Pick the layout
+
+Match the user's intent to one of these layouts. If it's ambiguous, ask
+which one they want:
+
+- **Headline + bullets** → standard content slide (template slide 4)
+- **One huge number** → megastat (template slide 5)
+- **Several small stats** → `.row-3` or `.row-4` of `.stat` (NEXO deck slide 3)
+- **Code example** → `.code` block (template slide 6)
+- **Before/after comparison** → `.cmp` table (template slide 7)
+- **Three or four feature cards** → `.row-3`/`.row-4` of `.card` (template slide 8)
+- **Pull-quote / one-liner** → centered quote slide (template slide 9)
+- **Section divider** → dark slide with section number (template slide 3)
+
+## Step 2 — Read the closest example
+
+**Before generating any HTML**, read the matching source slide in
+`template/index.html`. Copy its structure verbatim — chrome, classes,
+inline styles, everything.
+
+If a closer match exists in `examples/cursor-nexo-security/index.html`
+(e.g. for `.bug` pills, `.row-step`, `.qr-card`, `.partner-logo`), use
+that as the source instead.
+
+## Step 3 — Decide the position
+
+Slides are linear `<section>` blocks. Ask the user where to insert if
+unclear. Default: append before the closing slide.
+
+## Step 4 — Generate the new `<section>`
+
+- Pick the right `.slide` vs `.slide.dark` class.
+- Pick the matching logo variant (`*_LIGHT.png` vs `*_DARK.png`).
+- Write the eyebrow (short, uppercase-styled by `theme.css`).
+- Fill the body using only the layout helpers from `theme.css`.
+- Add speaker notes in `<aside class="notes">…</aside>`.
+- Set the footer counter to its new position.
+
+## Step 5 — Update counters
+
+Critical: this is the easy-to-miss step.
+
+- Bump every following slide's `NN` counter by 1.
+- Update every slide's `MM` total to the new total.
+
+Example: deck has 10 slides, you insert at position 5. Old slide 5
+becomes slide 6, …, old slide 10 becomes slide 11. Every slide's `MM`
+goes from `10` to `11`.
+
+The fastest way: open the file, search for `/ 10` and replace with
+`/ 11`, then search for `0N / 11` (where N is the inserted position)
+and bump each subsequent counter individually.
+
+## Step 6 — Verify
+
+- Run `npm run present:template` (or `:example`).
+- Open `localhost:4321`.
+- Press `O` for overview — confirm the new slide appears in the right
+  position with correct chrome.
+- Press `→` and `←` around it — confirm transitions work.
+
+## Common mistakes
+
+- ❌ Skipping step 5 (footer counters drift).
+- ❌ Wrong logo variant (light logo on dark slide → invisible).
+- ❌ Hardcoded colors (`color: #ff0000` instead of `color: var(--accent)`).
+- ❌ Missing `<aside class="notes">` — speaker mode shows blank.
+- ❌ Editing `examples/cursor-nexo-security/` when the user meant
+  `template/`. The example is preserved as a historical reference.
