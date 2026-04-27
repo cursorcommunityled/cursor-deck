@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursor decks</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:    #14120B;
+    --paper:  #F7F7F4;
+    --muted:  #6B6960;
+    --subtle: #9E9C90;
+    --line:   #E6E5DD;
+    --accent: #5C5A52;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 32px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+  }
+
+  h1 {
+    font-size: clamp(40px, 8vw, 72px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin: 18px 0 14px;
+  }
+
+  .lede {
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.45;
+    max-width: 560px;
+  }
+
+  .accent-rule {
+    width: 56px; height: 3px;
+    background: var(--accent);
+    margin: 28px 0 36px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 8px;
+  }
+  @media (min-width: 720px) {
+    .grid { grid-template-columns: 1fr 1fr; gap: 22px; }
+  }
+
+  .card {
+    display: block;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    padding: 22px 22px 26px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-2px);
+    border-top-color: var(--ink);
+    box-shadow: 0 10px 28px rgba(20, 18, 11, 0.08);
+    outline: none;
+  }
+  .card .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .card .name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .card .desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .card .meta {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--subtle);
+    letter-spacing: 0.04em;
+  }
+
+  footer {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 32px 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--subtle);
+    flex-wrap: wrap;
+  }
+  footer a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Cursor decks</div>
+    <h1>Slide decks for talks, workshops, and meetups.</h1>
+    <p class="lede">Pure HTML + Reveal.js. Cursor-branded, latte-cream theme. Best viewed in landscape.</p>
+    <div class="accent-rule"></div>
+
+    <nav class="grid" aria-label="Available decks">
+      <a class="card" href="/template/">
+        <div class="tag">Template</div>
+        <div class="name">Generic deck starter</div>
+        <div class="desc">Ten reference slides covering every layout the theme ships with — title, agenda, megastat, code, comparison, closer.</div>
+        <div class="meta">/template/</div>
+      </a>
+
+      <a class="card" href="/examples/cursor-nexo-security/">
+        <div class="tag">Example · April 2026</div>
+        <div class="name">Cursor × NEXO · Sesión 03</div>
+        <div class="desc">Real deck for the "Código Seguro con Cursor" webinar. Co-branded with Fundación NEXO.</div>
+        <div class="meta">/examples/cursor-nexo-security/</div>
+      </a>
+    </nav>
+  </main>
+
+  <footer>
+    <span>cursor-deck · Reveal.js 5.1</span>
+    <span><a href="https://github.com/mascarock/cursor-deck">github.com/mascarock/cursor-deck</a></span>
+  </footer>
+</body>
+</html>

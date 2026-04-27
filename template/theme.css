@@ -503,6 +503,70 @@ html.deck-dark .deck-toolbar button[aria-pressed="true"] {
   color: var(--ink);
   border-color: var(--paper);
 }
+/* ── Mobile portrait guard ──────────────────────────────────────────────── */
+/* Reveal scales the 1280×720 stage to fit; on a phone in portrait that means
+   tiny letterboxed slides. Show a "rotate your phone" prompt instead. */
+.orientation-guard {
+  display: none;
+}
+
+@media (orientation: portrait) and (pointer: coarse) {
+  html,
+  body {
+    background: var(--ink);
+  }
+
+  .reveal,
+  .deck-toolbar {
+    visibility: hidden;
+  }
+
+  .orientation-guard {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 28px;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    font-family: var(--font-sans);
+  }
+
+  .orientation-guard__icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(247, 247, 244, 0.22);
+    border-radius: 999px;
+    color: var(--paper);
+  }
+
+  .orientation-guard__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .orientation-guard__title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .orientation-guard__copy {
+    max-width: 260px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--subtle);
+  }
+}
+
 @media print {
-  .deck-toolbar { display: none; }
+  .deck-toolbar,
+  .orientation-guard { display: none; }
 }

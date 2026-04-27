@@ -51,6 +51,20 @@
   </button>
 </div>
 
+<!-- Mobile portrait guard: Reveal.js decks are designed for 16:9 landscape.
+     On phones in portrait we show this prompt instead of letterboxed slides. -->
+<div class="orientation-guard" role="status" aria-live="polite">
+  <div class="orientation-guard__icon" aria-hidden="true">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="5" y="8" width="18" height="12" rx="2"/>
+      <path d="M8 4h6a10 10 0 0 1 10 10v1"/>
+      <path d="M22 13l2 2 2-2"/>
+    </svg>
+  </div>
+  <div class="orientation-guard__title">Rotate your phone</div>
+  <div class="orientation-guard__copy">This presentation is designed for landscape mode.</div>
+</div>
+
 <div class="reveal">
 <div class="slides">
 
@@ -475,7 +489,17 @@
   });
   document.addEventListener('fullscreenchange', () => {
     fullscreenBtn.setAttribute('aria-pressed', document.fullscreenElement ? 'true' : 'false');
+    lockLandscapeWhenPossible();
   });
+
+  async function lockLandscapeWhenPossible() {
+    if (!document.fullscreenElement || !screen.orientation?.lock) return;
+    try {
+      await screen.orientation.lock('landscape');
+    } catch {
+      // Some mobile browsers only allow orientation changes from OS controls.
+    }
+  }
 
   function syncDeckBackground() {
     const current = Reveal.getCurrentSlide();
