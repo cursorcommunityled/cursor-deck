@@ -8,20 +8,21 @@ If you only read one section: jump to **[Adding a slide](#adding-a-slide)**.
 ## What this repo is
 
 A Cursor-branded Reveal.js deck template. Pure HTML + CSS, no build step,
-no framework. Two decks ship side by side:
+no framework. A starter template plus example decks:
 
 - `template/` — generic 10-slide starter, fork-this.
 - `examples/cursor-nexo-security/` — the real Cursor × Fundación NEXO
   Sesión 03 deck (April 2026). Reference only — **do not edit**.
+- `examples/cursor-model-training/` — tutorial example (how model training works). OK to edit or fork.
 
-Both share `cursor-brand-assets/` (symlinked from each deck's `brand/`
-folder) and the same theme tokens.
+Each deck's `brand/` folder symlinks to `cursor-brand-assets/`, and all use the same theme tokens.
 
 ## Run / preview
 
 ```bash
 npm run present:template   # → http://localhost:4321
 npm run present:example
+npm run present:example-training
 ```
 
 No `npm install` needed. `serve` is fetched on demand via `npx`.

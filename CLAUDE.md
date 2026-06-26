@@ -15,17 +15,18 @@ for adding a slide.
   separate files.
 - **Speaker notes:** `<aside class="notes">…</aside>` inside each
   `<section>`. Visible with `S` during the talk.
-- **Two decks:**
+- **Decks:**
   - `template/` — generic starter, **edit this**.
   - `examples/cursor-nexo-security/` — real Cursor × NEXO deck, kept
     verbatim. **Do not edit** unless the user explicitly asks for a
     historical correction.
+  - `examples/cursor-model-training/` — tutorial example (how model training works); editable.
 - **Footer counter:** when you add/remove a slide in `template/`, update
   every `NN / MM` counter in the file. Easy to miss.
 - **Light vs dark logos:** match `*_LIGHT.png` to `.slide`, `*_DARK.png`
   to `.slide.dark`. Wrong variant disappears against the background.
 - **Run / preview:** `npm run present:template` or
-  `npm run present:example` — both serve on `localhost:4321`.
+  `npm run present:example` or `npm run present:example-training` — all serve on `localhost:4321`.
 
 ## When in doubt
 
