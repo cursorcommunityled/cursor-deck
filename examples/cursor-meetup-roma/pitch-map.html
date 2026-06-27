@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor Meetup · Roma — La mappa del discorso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14120B;
+    --paper:#F7F7F4;
+    --accent:#5C5A52;
+    --line:#E6E5DD;
+    --muted:#6B6960;
+    --subtle:#9E9C90;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:#ECECE6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    padding:18px;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ---- The printable sheet : A4 landscape ---- */
+  .sheet{
+    width:297mm;
+    min-height:210mm;
+    background:var(--paper);
+    color:var(--ink);
+    padding:10mm 11mm 9mm;
+    box-shadow:0 18px 60px rgba(20,18,11,.22);
+    display:flex;
+    flex-direction:column;
+    gap:5mm;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  /* ============ HEADER ============ */
+  .head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:12px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:6px;
+  }
+  .head .left{display:flex;flex-direction:column;gap:3px;}
+  .kicker{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-size:27px;
+    line-height:1;
+    margin:0;
+    font-weight:800;
+    letter-spacing:-.015em;
+  }
+  h1 .dim{color:var(--subtle);font-weight:700;}
+  .meta{
+    font-family:var(--mono);
+    font-size:9.5px;
+    color:var(--muted);
+    text-align:right;
+    line-height:1.5;
+  }
+  .meta b{color:var(--ink);font-weight:600;}
+
+  /* ============ THESIS ============ */
+  .thesis{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    line-height:1.3;
+    color:var(--ink);
+  }
+  .thesis .tag{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:8.5px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--paper);
+    background:var(--ink);
+    padding:3px 7px;
+    border-radius:2px;
+  }
+  .thesis em{font-style:normal;font-weight:700;}
+
+  /* ============ TREE SPINE ============ */
+  .tree{
+    position:relative;
+    height:20px;
+    margin-bottom:-2px;
+  }
+  .tree::after{
+    content:"";
+    position:absolute;
+    left:11.5%;
+    right:11.5%;
+    bottom:0;
+    border-top:1.5px solid var(--accent);
+  }
+  .tree .node{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    font-family:var(--mono);
+    font-size:8.5px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    background:var(--paper);
+    padding:0 10px;
+  }
+
+  /* ============ ACTS ============ */
+  .acts{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+    flex:1;
+  }
+  .act{
+    position:relative;
+    border:1px solid var(--line);
+    border-top:3px solid var(--ink);
+    background:#FCFCFA;
+    padding:8px 9px 9px;
+    display:flex;
+    flex-direction:column;
+  }
+  .act::before{ /* tick up to the spine */
+    content:"";
+    position:absolute;
+    left:50%;
+    top:-9px;
+    width:0;
+    height:9px;
+    border-left:1.5px solid var(--accent);
+  }
+  .act > .ahead{
+    display:flex;
+    align-items:baseline;
+    gap:7px;
+    margin-bottom:5px;
+  }
+  .anum{
+    font-family:var(--mono);
+    font-size:18px;
+    font-weight:700;
+    line-height:1;
+    color:var(--ink);
+  }
+  .atitle{
+    font-size:13px;
+    font-weight:700;
+    line-height:1.05;
+    letter-spacing:-.01em;
+  }
+  .arange{
+    margin-left:auto;
+    font-family:var(--mono);
+    font-size:7.5px;
+    letter-spacing:.08em;
+    color:var(--subtle);
+    border:1px solid var(--line);
+    padding:2px 4px;
+    border-radius:2px;
+    white-space:nowrap;
+    align-self:center;
+  }
+  .beats{
+    list-style:none;
+    margin:0 0 8px;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .beats li{
+    display:flex;
+    gap:6px;
+    font-size:9.5px;
+    line-height:1.32;
+    color:#27241B;
+  }
+  .beats .bn{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:8.5px;
+    font-weight:600;
+    color:var(--accent);
+    padding-top:.5px;
+  }
+  .beats b{font-weight:700;color:var(--ink);}
+  .beats .note{color:var(--muted);}
+
+  /* killer block pinned to the bottom of every card */
+  .killer{
+    margin-top:auto;
+    border-top:1px dashed var(--subtle);
+    padding-top:7px;
+  }
+  .klabel{
+    font-family:var(--mono);
+    font-size:7px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--subtle);
+    margin-bottom:3px;
+  }
+  .kbig{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:20px;
+    line-height:1;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  .kbig .arrow{color:var(--subtle);font-weight:500;}
+  .kbig small{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:0;}
+  .kphrase{
+    font-size:11.5px;
+    font-weight:800;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin-bottom:4px;
+  }
+  .kstats{
+    display:flex;
+    flex-wrap:wrap;
+    gap:3px 5px;
+    font-family:var(--mono);
+    font-size:9px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .kstats span{
+    border:1px solid var(--line);
+    background:var(--paper);
+    padding:1.5px 4px;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  .kstats span i{font-style:normal;color:var(--muted);font-weight:500;}
+
+  /* ============ REMEMBER STRIP ============ */
+  .remember{
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:3px;
+    padding:10px 14px;
+    display:flex;
+    align-items:stretch;
+    gap:16px;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .remember .rtag{
+    flex:0 0 auto;
+    align-self:center;
+    font-family:var(--mono);
+    font-size:8px;
+    line-height:1.4;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--subtle);
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+  }
+  .rlines{display:flex;flex-direction:column;gap:6px;flex:1;}
+  .rline{
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+    font-size:14px;
+    line-height:1.18;
+    font-weight:600;
+  }
+  .rline .rn{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:10px;
+    font-weight:700;
+    color:#C9C7BC;
+  }
+  .rline.two{color:#EDEBE2;}
+  .rline.two q{font-weight:700;}
+  .rline q{quotes:"“" "”";}
+
+  /* ============ FOOTER ============ */
+  .foot{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    border-top:1.5px solid var(--ink);
+    padding-top:7px;
+  }
+  .pipe{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:5px;
+    font-family:var(--mono);
+    font-size:9.5px;
+    font-weight:600;
+  }
+  .pipe .plabel{
+    color:var(--subtle);
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-size:7.5px;
+    margin-right:3px;
+  }
+  .pipe .step{
+    border:1px solid var(--line);
+    padding:2px 6px;
+    border-radius:2px;
+    color:var(--ink);
+    background:#FCFCFA;
+  }
+  .pipe .sep{color:var(--subtle);font-weight:500;}
+  .cta{
+    text-align:right;
+    font-family:var(--mono);
+    font-size:9.5px;
+    color:var(--muted);
+    line-height:1.5;
+    white-space:nowrap;
+  }
+  .cta .clabel{
+    display:block;
+    font-size:7.5px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--subtle);
+  }
+  .cta b{color:var(--ink);font-weight:700;}
+
+  /* ============ PRINT ============ */
+  @page{ size:A4 landscape; margin:7mm; }
+  @media print{
+    body{background:#fff;padding:0;display:block;}
+    .sheet{
+      width:auto;
+      min-height:auto;
+      box-shadow:none;
+      padding:0;
+      gap:4.5mm;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <header class="head">
+    <div class="left">
+      <div class="kicker">Cursor Community Meetup · Roma</div>
+      <h1>La mappa del discorso <span class="dim">— pitch map</span></h1>
+    </div>
+    <div class="meta">
+      Sabato <b>27 giugno 2026</b> · Roma<br>
+      Host: <b>Nick Mascaro</b> · 21 slide · 4 atti<br>
+      Apertura <b>01–02</b>: Cover · Programma della serata
+    </div>
+  </header>
+
+  <!-- THESIS -->
+  <div class="thesis">
+    <span class="tag">Tesi</span>
+    <div>Cursor non è più solo un editor AI: sta diventando <em>il sistema operativo dello sviluppo agentico</em>. Il collo di bottiglia non è più digitare — è descrivere, dare contesto, rivedere e unire in sicurezza. <span style="color:var(--subtle)">— keynote di M. Truell, Compile 26.</span></div>
+  </div>
+
+  <!-- TREE SPINE -->
+  <div class="tree"><span class="node">La scaletta · 4 atti in ordine</span></div>
+
+  <!-- ACTS -->
+  <main class="acts">
+
+    <!-- ACT 1 -->
+    <section class="act">
+      <div class="ahead">
+        <span class="anum">01</span>
+        <span class="atitle">La terza era</span>
+        <span class="arange">slide 03–04</span>
+      </div>
+      <ol class="beats">
+        <li><span class="bn">1.1</span><span><b>Tre modi di scrivere software:</b> a mano → AI-assistita → <b>flotte di agenti</b> (il salto).</span></li>
+        <li><span class="bn">1.2</span><span>Gli agenti <b>pianificano, scrivono, testano, rivedono, spediscono</b>. <span class="note">Tu dirigi.</span></span></li>
+        <li><span class="bn">1.3</span><span>Il collo di bottiglia <b>è cambiato</b>: non più la tastiera, ma contesto e review.</span></li>
+      </ol>
+      <div class="killer">
+        <div class="klabel">Numero da ricordare</div>
+        <div class="kbig">8.600 <small><span class="arrow">da</span> 3.600 · ~2.4x</small></div>
+        <div class="klabel" style="margin-top:3px;letter-spacing:.08em;">righe / sviluppatore / settimana</div>
+      </div>
+    </section>
+
+    <!-- ACT 2 -->
+    <section class="act">
+      <div class="ahead">
+        <span class="anum">02</span>
+        <span class="atitle">Vibe coding<br>vs AI Engineer</span>
+        <span class="arange">slide 05–12</span>
+      </div>
+      <ol class="beats">
+        <li><span class="bn">2.1</span><span><b>Cos'è il vibe coding</b> (Karpathy): a sensazione, accetti senza leggere. <span class="note">Ottimo per prototipi e imparare.</span></span></li>
+        <li><span class="bn">2.2</span><span><b>Più codice ≠ progresso:</b> i mega-PR nascondono i bug.</span></li>
+        <li><span class="bn">2.3</span><span><b>Da «vibe» a AI Engineer</b> + il workflow: contesto, review, test, modello, scala.</span></li>
+        <li><span class="bn">2.4</span><span><b>Cursor sta con l'ingegneria:</b> Cursor 3 · Cloud · SDK · Origin · Composer (modelli propri su SpaceX/Colossus) = <b>fabbrica di software</b>.</span></li>
+      </ol>
+      <div class="killer">
+        <div class="klabel">Da ricordare</div>
+        <div class="kphrase">Più codice non è più progresso.</div>
+        <div class="kstats">
+          <span>13,8% <i>mega-PR</i></span>
+          <span>90%+ <i>contesto</i></span>
+          <span>46x <i>power user</i></span>
+          <span>~8x <i>costo Composer</i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACT 3 -->
+    <section class="act">
+      <div class="ahead">
+        <span class="anum">03</span>
+        <span class="atitle">Cursor Community</span>
+        <span class="arange">slide 13–15</span>
+      </div>
+      <ol class="beats">
+        <li><span class="bn">3.1</span><span><b>Una rete globale:</b> persone che si incontrano per costruire, conoscersi, condividere.</span></li>
+        <li><span class="bn">3.2</span><span><b>Formati:</b> Cafe · Workshop · Meetup · Hackathon.</span></li>
+        <li><span class="bn">3.3</span><span><b>Roma è un nodo</b> di questa rete. <span class="note">C'è una community che ti aspetta.</span></span></li>
+      </ol>
+      <div class="killer">
+        <div class="klabel">Numeri da ricordare</div>
+        <div class="kstats" style="font-size:10px;margin-bottom:4px;">
+          <span>800+ <i>eventi</i></span>
+          <span>200+ <i>città</i></span>
+          <span>80+ <i>paesi</i></span>
+          <span>300+ <i>ambassador</i></span>
+        </div>
+        <div class="kbig" style="font-size:16px;">~500<small> candidature ambassador / sett</small></div>
+      </div>
+    </section>
+
+    <!-- ACT 4 -->
+    <section class="act">
+      <div class="ahead">
+        <span class="anum">04</span>
+        <span class="atitle">I nostri ospiti</span>
+        <span class="arange">slide 16–21</span>
+      </div>
+      <ol class="beats">
+        <li><span class="bn">4.1</span><span><b>Sunita Rao</b> — Community Leader, Cursor. <span class="note">Community nel mondo, programma ambassador.</span></span></li>
+        <li><span class="bn">4.2</span><span><b>Giacomo Barbieri</b> — Team1. <span class="note">Blockchain + AI insieme, casi d'uso.</span></span></li>
+        <li><span class="bn">4.3</span><span><b>Marco Galluccio</b> — ETH Rome. <span class="note">Saluto, ponti tra community a Roma.</span></span></li>
+      </ol>
+      <div class="killer">
+        <div class="klabel">Chiusura · slide 20–21</div>
+        <div class="kphrase" style="font-size:14px;">Grazie. Ora costruiamo.</div>
+        <div class="klabel" style="letter-spacing:.08em;">→ Scan to join · RQUBKMFB · Networking</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- REMEMBER STRIP -->
+  <div class="remember">
+    <div class="rtag">Da<br>ricordare</div>
+    <div class="rlines">
+      <div class="rline one"><span class="rn">A</span><q>I migliori agenti non scrivono di più. Leggono di più, prima di scrivere.</q></div>
+      <div class="rline two"><span class="rn">Z</span><q>Non «vibe» a caso. Dirigere agenti, con metodo.</q></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="pipe">
+      <span class="plabel">Workflow agentico</span>
+      <span class="step">Spec</span><span class="sep">→</span>
+      <span class="step">Rules</span><span class="sep">→</span>
+      <span class="step">Plan</span><span class="sep">→</span>
+      <span class="step">Agent</span><span class="sep">→</span>
+      <span class="step">Review</span><span class="sep">→</span>
+      <span class="step">PR</span><span class="sep">→</span>
+      <span class="step">Test &amp; Security</span>
+    </div>
+    <div class="cta">
+      <span class="clabel">CTA</span>
+      <b>hack.vibefy.net/brainstorm · RQUBKMFB</b><br>cursor.com/community · Discord · luma
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
