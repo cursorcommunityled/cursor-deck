@@ -4,3 +4,9 @@ node_modules/
 .next/
 dist/
 build/
+
+# Scratch / working files (potrace intermediates, previews, test masks)
+tmp/
+
+# Generated artifacts (regenerated from event/ sources)
+output/
