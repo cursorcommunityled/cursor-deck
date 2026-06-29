@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>How to Train Models — Cursor Deck Example</title>
+
+<!-- Reveal.js (CDN, pinned) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Custom theme -->
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<div class="deck-toolbar" role="toolbar" aria-label="Presentation controls">
+  <button id="btn-overview" type="button" aria-pressed="false" title="Show all slides (O)" aria-label="Show all slides">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="1.5" y="1.5" width="5" height="5"/>
+      <rect x="9.5" y="1.5" width="5" height="5"/>
+      <rect x="1.5" y="9.5" width="5" height="5"/>
+      <rect x="9.5" y="9.5" width="5" height="5"/>
+    </svg>
+  </button>
+  <button id="btn-fullscreen" type="button" aria-pressed="false" title="Toggle fullscreen (F)" aria-label="Toggle fullscreen">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/>
+    </svg>
+  </button>
+</div>
+
+<div class="orientation-guard" role="status" aria-live="polite">
+  <div class="orientation-guard__icon" aria-hidden="true">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="5" y="8" width="18" height="12" rx="2"/>
+      <path d="M8 4h6a10 10 0 0 1 10 10v1"/>
+      <path d="M22 13l2 2 2-2"/>
+    </svg>
+  </div>
+  <div class="orientation-guard__title">Rotate your phone</div>
+  <div class="orientation-guard__copy">This presentation is designed for landscape mode.</div>
+</div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1 — Title -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Example · ML fundamentals</div>
+    </div>
+
+    <img class="cube-wm" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin-top: 110px;">
+      <div class="eyebrow" style="color: var(--paper); opacity: .7;">A guided overview</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white);">
+        How to train<br>models.
+      </h1>
+      <div class="spacer-m"></div>
+      <p class="lede" style="color: var(--subtle);">Data, loss, optimization — the loop that turns examples into parameters.</p>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+    </div>
+
+    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: end;">
+      <div>
+        <div style="font-size: 18px; font-weight: 600; color: var(--white);">cursor-deck</div>
+        <div style="font-size: 13px; color: var(--subtle); margin-top: 4px;">Example session · No prerequisites</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="mono" style="font-size: 12px; color: var(--subtle); letter-spacing: 0.18em;">APRIL 2026</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Frame the talk as a map, not a math lecture: listeners should leave with a picture of the training loop they can search against later.
+  </aside>
+</section>
+
+<!-- SLIDE 2 — Agenda -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Agenda</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">What we'll cover.</h2>
+      <p class="lede" style="margin-top: 14px;">The standard recipe behind most neural net training — from batching to validation.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <div class="row-step">
+        <div class="num">01</div>
+        <div><div class="h">Data &amp; labels</div><div class="s">What the model sees, and what “correct” means.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">02</div>
+        <div><div class="h">Architecture &amp; parameters</div><div class="s">Where the numbers live that training actually updates.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">03</div>
+        <div><div class="h">Loss &amp; optimization</div><div class="s">Measuring error and nudging weights with gradients.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">04</div>
+        <div><div class="h">The training loop</div><div class="s">Epochs, batches, forward and backward passes.</div></div>
+      </div>
+      <div class="row-step last">
+        <div class="num">05</div>
+        <div><div class="h">Validation &amp; generalization</div><div class="s">Knowing when to stop and what can go wrong.</div></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="left">Cursor · Example · Model training</span>
+      <span>02 / 10</span>
+    </div>
+  </div>
+  <aside class="notes">Give a one-line definition of “training” before moving on: fitting parameters to minimize loss on data.</aside>
+</section>
+
+<!-- SLIDE 3 — Section divider -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Part one</div>
+    </div>
+
+    <img class="cube-wm bottom" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <div class="mono" style="font-size: 14px; color: var(--subtle); letter-spacing: 0.2em;">01 / 03</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white); font-size: 110px;">Data first.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 640px;">
+        Models learn from examples. The quality of those examples bounds what you can ever get out.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>03 / 10</span></div>
+  </div>
+  <aside class="notes">Emphasize garbage-in, garbage-out before anyone fixates on optimizer choice.</aside>
+</section>
+
+<!-- SLIDE 4 — Three cards -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">The stack</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Three pieces you wire<br>before the first step.</h2>
+      <p class="lede" style="margin-top: 14px;">Swap any of these and you are training a different problem, even if the code looks the same.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-3" style="margin-top: 30px;">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="name">Data &amp; batches</div>
+        <div class="desc">Inputs grouped into mini-batches so gradients are noisy but affordable. Shuffling matters.</div>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="name">Model</div>
+        <div class="desc">A parameterized function: predictions from weights. Architecture is inductive bias.</div>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="name">Loss function</div>
+        <div class="desc">A scalar score of how wrong predictions are. Training minimizes this on average.</div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>04 / 10</span></div>
+  </div>
+  <aside class="notes">If someone asks “which loss?” — point to task match: cross-entropy for classification, MSE for regression, etc.</aside>
+</section>
+
+<!-- SLIDE 5 — Megastat -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Scale</div>
+    </div>
+
+    <div style="margin-top: 80px;">
+      <div class="megastat">
+        <div class="num">∇L</div>
+        <div class="copy">
+          <h2>Gradients point downhill<br>on the loss surface.</h2>
+          <div class="src">Backpropagation assigns each parameter a share of the blame for the error.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <div class="row-3">
+        <div class="stat"><div class="big">η</div><div class="label">learning rate</div></div>
+        <div class="stat"><div class="big">batch</div><div class="label">noise vs. speed</div></div>
+        <div class="stat"><div class="big">step</div><div class="label">one weight update</div></div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>05 / 10</span></div>
+  </div>
+  <aside class="notes">Keep the calculus light: “gradient” is enough; save chain rule for office hours.</aside>
+</section>
+
+<!-- SLIDE 6 — Code -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">The loop</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">One epoch, many updates.</h2>
+      <p class="lede" style="margin-top: 14px;">Forward pass → loss → backward → optimizer step. Repeat until validation says stop.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="code" style="margin-top: 24px;">
+      <div class="titlebar mono">train.py</div>
+<pre><span class="k">def</span> <span class="h">train_one_epoch</span>(model, loader, loss_fn, optimizer):
+<span class="k">    </span>model.train()
+<span class="k">    </span><span class="k">for</span> xb, yb <span class="k">in</span> loader:
+<span class="k">        </span>optimizer.zero_grad()
+<span class="k">        </span>logits = model(xb)
+<span class="k">        </span>loss = loss_fn(logits, yb)
+<span class="k">        </span>loss.backward()
+<span class="k">        </span>optimizer.step()
+</pre>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>06 / 10</span></div>
+  </div>
+  <aside class="notes">Mention that frameworks autodiff the backward pass; humans rarely write gradients by hand.</aside>
+</section>
+
+<!-- SLIDE 7 — Comparison -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Training vs. inference</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Same model, different mode.</h2>
+      <div class="accent-rule"></div>
+    </div>
+
+    <table class="cmp" style="margin-top: 30px;">
+      <thead>
+        <tr><th>Aspect</th><th>Training</th><th>Inference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="lbl">Gradients</td><td class="before">Computed and applied</td><td class="after">Usually disabled</td></tr>
+        <tr><td class="lbl">Dropout / batch norm</td><td class="before">Stochastic / batch stats</td><td class="after">Eval mode, fixed behavior</td></tr>
+        <tr><td class="lbl">Goal</td><td class="before">Lower loss on training data</td><td class="after">Fast, correct predictions</td></tr>
+        <tr><td class="lbl">Data</td><td class="before">Labels required</td><td class="after">Inputs only</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top: 30px;">
+      <strong>Watch the eval switch.</strong> Shipping a model that is still in “train mode” is a common bug.
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>07 / 10</span></div>
+  </div>
+  <aside class="notes">Good moment to tie to Cursor: codegen should set eval() before benchmarks or deployment snippets.</aside>
+</section>
+
+<!-- SLIDE 8 — Four cards -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">What to tune</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Levers practitioners actually turn.</h2>
+      <p class="lede" style="margin-top: 14px;">After the loop works, most effort goes here — not into rewriting backprop.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-4" style="margin-top: 30px;">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="name">Data</div>
+        <div class="desc">More, cleaner, better-labeled.</div>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="name">Capacity</div>
+        <div class="desc">Layers, width — and regularization so it does not memorize.</div>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="name">Schedule</div>
+        <div class="desc">Learning rate, warmup, early stopping.</div>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <div class="name">Compute</div>
+        <div class="desc">Batch size, mixed precision, hardware.</div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>08 / 10</span></div>
+  </div>
+  <aside class="notes">Quote the folk wisdom: regularization and data often beat a fancier optimizer.</aside>
+</section>
+
+<!-- SLIDE 9 — Quote -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Generalization</div>
+    </div>
+
+    <div style="margin: auto 0;">
+      <div class="eyebrow accent">Remember this</div>
+      <div class="spacer-m"></div>
+      <h2 style="font-size: 64px; font-weight: 700; line-height: 1.15; max-width: 980px;">
+        Training minimizes loss on examples you have.<br>
+        <span class="accent">Deployment cares about examples you don't.</span>
+      </h2>
+      <div class="spacer-l"></div>
+      <p class="body-l" style="color: var(--muted);">Hold out a validation set. Watch for overfitting. Match metrics to the real goal.</p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>09 / 10</span></div>
+  </div>
+  <aside class="notes">Bridge to responsible ML: fairness and drift are about the world, not just loss on a static set.</aside>
+</section>
+
+<!-- SLIDE 10 — Closing -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Thanks</div>
+    </div>
+
+    <img class="cube-wm" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <h1 class="title-xl" style="font-size: 130px; color: var(--white);">Thank you.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8; margin: 28px 0;"></div>
+      <div style="font-size: 32px; font-weight: 700; color: var(--white); line-height: 1.2; max-width: 880px;">
+        Data → forward → loss → backward → step.<br>
+        <span style="color: var(--subtle); font-weight: 400;">Everything else is iteration and good taste.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px; display: flex; justify-content: space-between; align-items: end;">
+      <div>
+        <div style="font-size: 18px; font-weight: 600; color: var(--white);">cursor-deck</div>
+        <div style="font-size: 13px; color: var(--subtle); margin-top: 4px;">github.com/mascarock/cursor-deck</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="eyebrow" style="color: var(--subtle);">Next steps</div>
+        <div class="mono" style="font-size: 13px; color: var(--subtle); margin-top: 4px;">
+          Try the template · Read the theme tokens · Ship a talk
+        </div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor · Example · Model training</span><span>10 / 10</span></div>
+  </div>
+  <aside class="notes">Point people at the template folder to fork their own deck with the same chrome.</aside>
+</section>
+
+</div>
+</div>
+
+<!-- Reveal.js bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 2.0,
+    controls: true,
+    controlsLayout: "edges",
+    progress: true,
+    slideNumber: false,
+    history: true,
+    hash: true,
+    transition: "slide",
+    transitionSpeed: "default",
+    backgroundTransition: "fade",
+    plugins: [ RevealNotes ],
+  });
+
+  const overviewBtn   = document.getElementById('btn-overview');
+  const fullscreenBtn = document.getElementById('btn-fullscreen');
+
+  overviewBtn.addEventListener('click', () => Reveal.toggleOverview());
+  Reveal.on('overviewshown', () => overviewBtn.setAttribute('aria-pressed', 'true'));
+  Reveal.on('overviewhidden', () => overviewBtn.setAttribute('aria-pressed', 'false'));
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    fullscreenBtn.setAttribute('aria-pressed', document.fullscreenElement ? 'true' : 'false');
+    lockLandscapeWhenPossible();
+  });
+
+  async function lockLandscapeWhenPossible() {
+    if (!document.fullscreenElement || !screen.orientation?.lock) return;
+    try {
+      await screen.orientation.lock('landscape');
+    } catch {
+      // Some mobile browsers only allow orientation changes from OS controls.
+    }
+  }
+
+  function syncDeckBackground() {
+    const current = Reveal.getCurrentSlide();
+    const isDark = !!current && !!current.querySelector('.slide.dark');
+    document.documentElement.classList.toggle('deck-dark', isDark);
+  }
+  Reveal.on('ready', syncDeckBackground);
+  Reveal.on('slidechanged', syncDeckBackground);
+</script>
+</body>
+</html>

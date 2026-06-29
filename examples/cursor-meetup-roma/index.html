@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Cursor Community Meetup · Roma — 27 giugno 2026</title>
+
+<!-- Reveal.js (CDN, pinned) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Custom theme -->
+<link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<!--
+  ───────────────────────────────────────────────────────────────────────────
+  Cursor Community Meetup · Roma — 27 giugno 2026
+  Host deck (Nick). Lingua: italiano semplice, titoli in inglese dove suona meglio.
+  Atti: 01 La terza era · 02 Vibe vs Engineer · 03 Community · 04 Ospiti
+  22 slide. Se aggiungi/togli una slide, aggiorna il contatore NN / 22 ovunque.
+  globe.js disegna il globo 3D nel mount #cursor-globe (slide 14).
+  ───────────────────────────────────────────────────────────────────────────
+-->
+
+<div class="deck-toolbar" role="toolbar" aria-label="Presentation controls">
+  <button id="btn-overview" type="button" aria-pressed="false" title="Show all slides (O)" aria-label="Show all slides">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <rect x="1.5" y="1.5" width="5" height="5"/>
+      <rect x="9.5" y="1.5" width="5" height="5"/>
+      <rect x="1.5" y="9.5" width="5" height="5"/>
+      <rect x="9.5" y="9.5" width="5" height="5"/>
+    </svg>
+  </button>
+  <button id="btn-fullscreen" type="button" aria-pressed="false" title="Toggle fullscreen (F)" aria-label="Toggle fullscreen">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/>
+    </svg>
+  </button>
+</div>
+
+<div class="orientation-guard" role="status" aria-live="polite">
+  <div class="orientation-guard__icon" aria-hidden="true">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="5" y="8" width="18" height="12" rx="2"/>
+      <path d="M8 4h6a10 10 0 0 1 10 10v1"/>
+      <path d="M22 13l2 2 2-2"/>
+    </svg>
+  </div>
+  <div class="orientation-guard__title">Gira il telefono</div>
+  <div class="orientation-guard__copy">Questa presentazione è pensata per lo schermo orizzontale.</div>
+</div>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 1 — Cover (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Community Meetup · Roma</div>
+    </div>
+
+    <img class="cube-wm" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin-top: 96px;">
+      <div class="eyebrow" style="color: var(--paper); opacity: .7;">Roma · 27 giugno 2026</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white);">
+        Cursor Community<br>Meetup · Roma.
+      </h1>
+      <div class="spacer-m"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 760px;">
+        Vibe coding, AI engineering, e la community che sta crescendo in tutto il mondo.
+      </p>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+    </div>
+
+    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: end;">
+      <div>
+        <div style="font-size: 18px; font-weight: 600; color: var(--white);">Nick Mascaro</div>
+        <div style="font-size: 13px; color: var(--subtle); margin-top: 4px;">Host · Cursor Community Roma</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="mono" style="font-size: 12px; color: var(--subtle); letter-spacing: 0.18em;">27 GIUGNO 2026</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    Benvenuto. Presentati in 20 secondi, ringrazia chi ospita la serata. Inquadra il piano: un po' di visione (la terza era), il cuore — vibe coding vs AI engineer — poi la community e i tre ospiti. Tono leggero, è un meetup, non una lezione.
+  </aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 2 — Agenda (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark bg-aquilifer">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Agenda</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Programma della giornata.</h2>
+      <p class="lede" style="margin-top: 14px;">Un'ora insieme: un po' di visione, un po' di pratica, e i nostri ospiti.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <div class="row-step">
+        <div class="num">01</div>
+        <div><div class="h">La terza era</div><div class="s">Com'è cambiato lo sviluppo software, in cinque minuti.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">02</div>
+        <div><div class="h">Vibe coding vs AI Engineer</div><div class="s">Il cuore della giornata.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">03</div>
+        <div><div class="h">La community Cursor nel mondo</div><div class="s">Dove siamo, quanti siamo.</div></div>
+      </div>
+      <div class="row-step">
+        <div class="num">04</div>
+        <div><div class="h">I nostri ospiti</div><div class="s">Sunita Rao, Giacomo Barbieri, Marco Galluccio.</div></div>
+      </div>
+      <div class="row-step last">
+        <div class="num">05</div>
+        <div><div class="h">Networking</div><div class="s">Restate, parliamo, costruiamo qualcosa.</div></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span>
+      <span>02 / 22</span>
+    </div>
+  </div>
+  <aside class="notes">Tieni la slide ~20 secondi. Non leggere riga per riga: indica che il pezzo centrale è il punto 02, il resto incornicia.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 3 — Divider · La terza era (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Parte uno</div>
+    </div>
+
+    <img class="cube-wm bottom" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <div class="mono" style="font-size: 14px; color: var(--subtle); letter-spacing: 0.2em;">01 / 04</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white); font-size: 104px;">La terza era.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 680px;">
+        Dal codice scritto a mano alle flotte di agenti.
+      </p>
+      <p class="mono" style="font-size: 12px; color: var(--subtle); letter-spacing: 0.04em; margin-top: 24px; max-width: 680px; line-height: 1.6;">
+        Dal keynote di Michael Truell &middot; <strong style="color: var(--paper);">Compile 26</strong>, la prima conferenza di Cursor &middot; Fort Mason, San Francisco &middot; 16 giugno 2026.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>03 / 22</span></div>
+  </div>
+  <aside class="notes">Cambio di marcia. Stiamo per raccontare come è cambiato il mestiere. Frase d'aggancio: "In quindici anni siamo passati da scrivere ogni riga, a dirigere agenti che la scrivono per noi."</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 4 — Le tre ere (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Come siamo arrivati qui</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Tre modi di scrivere software.</h2>
+      <p class="lede" style="margin-top: 14px;">Siamo passati da «scrivo tutto io» a «dirigo gli agenti».</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-3" style="margin-top: 28px;">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="name">A mano</div>
+        <div class="desc">Scrivi ogni riga tu. Controllo totale, ma lento.</div>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="name">AI-assistita</div>
+        <div class="desc">L'AI completa e suggerisce. Tu guidi, riga per riga.</div>
+      </div>
+      <div class="card highlight">
+        <div class="num">03</div>
+        <div class="name">Flotte di agenti</div>
+        <div class="desc">Gli agenti pianificano, scrivono, testano e fanno review. Tu dai la direzione.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 26px;">
+      <strong>Il collo di bottiglia è cambiato.</strong> Oggi si aggiungono ~8.600 righe a settimana (erano 3.600 nel 2025), e l'<strong>81%</strong> del codice AI è ancora lì dopo un'ora — non è usa-e-getta. Il punto non è più scrivere: è descrivere, dare contesto, fare review. <span class="mono" style="color: var(--subtle);">(Cursor Insights)</span>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>04 / 22</span></div>
+  </div>
+  <aside class="notes">Tre ere in 60 secondi. Insisti sulla terza colonna (highlight): è lì che siamo. Il numero 8.600 vs 3.600 serve solo a dire "è successo davvero, non è teoria". Chiudi con: "più codice che mai — ma più codice non è ancora più valore." Ponte verso la parte due.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 5 — Divider · Vibe coding vs AI Engineer (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Parte due</div>
+    </div>
+
+    <img class="cube-wm bottom" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <div class="mono" style="font-size: 14px; color: var(--subtle); letter-spacing: 0.2em;">02 / 04</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white); font-size: 88px;">Vibe coding<br>vs AI Engineer.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 720px;">
+        Perché Cursor non è (solo) autocomplete — e perché la parola «vibe» ci sta un po' stretta.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>05 / 22</span></div>
+  </div>
+  <aside class="notes">Il cuore della serata. Anticipa che NON è "AI sì / AI no": è "come" usiamo l'AI. Sii rispettoso: il vibe coding ha il suo posto. Ma il valore vero è un altro.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 6 — Cos'è il vibe coding (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Partiamo dalle parole</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Cos'è il «vibe coding»?</h2>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div style="margin-top: 22px; border-left: 4px solid var(--accent); padding-left: 30px; max-width: 1000px;">
+      <div class="eyebrow accent">La definizione</div>
+      <div class="spacer-s"></div>
+      <h3 style="font-size: 40px; font-weight: 700; line-height: 1.24; letter-spacing: -0.02em;">
+        Programmare «a sensazione»: descrivi cosa vuoi, accetti quello che l'AI produce e vai avanti — <span class="accent">senza leggere davvero il codice.</span>
+      </h3>
+      <p class="attribution" style="margin-top: 18px;">Termine reso popolare da Andrej Karpathy, 2025.</p>
+    </div>
+
+    <div class="callout" style="margin-top: 26px;">
+      <strong>E va benissimo.</strong> Per un prototipo, per imparare, per il sabato sera. Il problema nasce quando «a sensazione» diventa il modo in cui costruiamo cose serie.
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>06 / 22</span></div>
+  </div>
+  <aside class="notes">Definisci con onestà, senza snobismo. Il callout è importante: riconosci il valore del vibe coding (prototipi, imparare). Così quando critichi la parola, non stai attaccando i principianti. Equilibrio.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 7 — Perché «vibe» ci sta stretta (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Il punto</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Più codice non è più progresso.</h2>
+      <p class="lede" style="margin-top: 14px;">«Vibe» suggerisce: niente spec, niente review, niente test. Indovinare, non ingegnerizzare.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-2" style="margin-top: 24px; align-items: start;">
+      <div class="stack">
+        <div class="card left-stripe"><strong>Niente contesto</strong> → l'agente indovina.</div>
+        <div class="card left-stripe"><strong>Niente review</strong> → i bug passano.</div>
+        <div class="card left-stripe"><strong>PR enormi</strong> → impossibili da controllare.</div>
+      </div>
+      <div class="stat" style="align-self: stretch; display: flex; flex-direction: column; justify-content: center;">
+        <div class="big">13,8%</div>
+        <div class="label">dei PR uniti sono «mega» (1.000+ righe). Erano l'8% un anno fa.</div>
+        <div class="sub">I PR enormi nascondono i bug. — Cursor Insights, 2026</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Il rischio non è l'AI.</strong> È confondere «tanto codice in fretta» con «software che funziona».
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>07 / 22</span></div>
+  </div>
+  <aside class="notes">Qui arriva il dato che dà peso all'argomento: i mega-PR quasi raddoppiati. Non è opinione, è la telemetria di Cursor stessa. Messaggio: la velocità senza disciplina crea debito, non progresso.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 8 — Da «vibe» a AI Engineer · tabella (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Stesso strumento, mentalità opposta</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Da «vibe» a AI Engineer.</h2>
+      <div class="accent-rule"></div>
+    </div>
+
+    <table class="cmp" style="margin-top: 22px;">
+      <thead>
+        <tr><th>Dimensione</th><th>Vibe coding</th><th>AI Engineer</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="lbl">Punto di partenza</td><td class="before">«Fammi una cosa»</td><td class="after">Una spec chiara</td></tr>
+        <tr><td class="lbl">Contesto</td><td class="before">Quello che c'è in chat</td><td class="after">Regole, docs, repo (.cursor/rules)</td></tr>
+        <tr><td class="lbl">Review</td><td class="before">Si spera funzioni</td><td class="after">Si valuta l'architettura, non solo il diff</td></tr>
+        <tr><td class="lbl">Test</td><td class="before">Dopo, forse</td><td class="after">CI e test dentro il lavoro</td></tr>
+        <tr><td class="lbl">Modello</td><td class="before">Il più potente, sempre</td><td class="after">Quello giusto per il task</td></tr>
+        <tr><td class="lbl">Scala</td><td class="before">Un agente alla volta</td><td class="after">Più agenti in parallelo, sotto controllo</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="margin-top: 22px;">
+      <strong>Cursor funziona con entrambi.</strong> Ma è costruito per premiare la colonna di destra.
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>08 / 22</span></div>
+  </div>
+  <aside class="notes">Non leggere tutta la tabella. Scegline 2-3 righe (contesto, review, scala) e raccontale. La frase chiave: stesso strumento, mentalità opposta. L'AI Engineer non scrive meno codice — lo dirige meglio.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 9 — Il workflow agentico · pipeline (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Il vero skill</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Il workflow agentico.</h2>
+      <p class="lede" style="margin-top: 14px;">Non «vibe» a caso. Un ciclo ripetibile — e ogni passo è una competenza.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="pipeline" style="margin-top: 34px;">
+      <div class="flow-step">Spec</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Rules</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Plan</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Agent</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Review</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">PR</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Test &amp; Security</div>
+    </div>
+
+    <p class="body" style="margin-top: 30px; color: var(--muted); max-width: 980px;">
+      E sta già succedendo: le modifiche accettate <strong style="color: var(--ink);">senza un diff manuale</strong> sono passate dal <strong style="color: var(--ink);">7% al 36%</strong> in pochi mesi. L'automazione sta entrando nel flusso.
+    </p>
+
+    <div class="callout" style="margin-top: 22px;">
+      <strong>Questo è anche il formato perfetto per un workshop.</strong> Ognuno di questi passi è una cosa che si può imparare e migliorare — una sera alla volta.
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>09 / 22</span></div>
+  </div>
+  <aside class="notes">Mostra la pipeline come "la ricetta". Il vibe coder salta tutto e va dritto ad Agent. L'AI Engineer passa per spec, rules, review, test. Accenna che potremmo fare un workshop su ogni tappa — gancio per i prossimi eventi.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 10 — Perché Cursor è "engineer" · lo stack (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Non solo un editor</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">Perché Cursor sta dalla parte dell'ingegneria.</h2>
+      <p class="lede" style="margin-top: 14px;">Non solo «dove scrivi il codice». Tutto lo stack, dall'idea al deploy.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-4" style="margin-top: 26px;">
+      <div class="card">
+        <div class="num">01</div>
+        <div class="name">Cursor 3</div>
+        <div class="desc">Un'unica plancia per lavorare con molti agenti.</div>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <div class="name">Cloud Agents</div>
+        <div class="desc">Agenti su macchine in cloud. Li lanci anche dal telefono.</div>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <div class="name">Cursor SDK</div>
+        <div class="desc">Gli agenti diventano infrastruttura programmabile.</div>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <div class="name">Origin</div>
+        <div class="desc">Un Git «forge» pensato per la velocità del codice degli agenti.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>E lo gestisci da ovunque.</strong> Desktop, web, telefono, Slack, Linear: un'unica plancia di comando per gli agenti. Tu orchestri, loro eseguono.
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>10 / 22</span></div>
+  </div>
+  <aside class="notes">Il messaggio: Cursor non vuole essere "l'autocomplete". Vuole l'intero ciclo idea → plan → codice → review → PR → deploy, gestibile da ogni superficie (desktop, web, telefono, Slack, Linear). Non serve spiegare ogni prodotto: serve far capire l'ambizione.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 11 — SpaceX × Cursor · modelli propri (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">L'ultimo tassello</div>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <h2 class="title-l">E costruiscono anche i propri modelli.</h2>
+      <p class="lede" style="margin-top: 14px;">Per non dipendere solo da altri — e per controllare costo, velocità e comportamento.</p>
+      <div class="accent-rule"></div>
+    </div>
+
+    <div class="row-2" style="margin-top: 28px; align-items: stretch;">
+      <div class="card">
+        <div class="name">Composer · modelli propri</div>
+        <div class="desc">Un modello fatto per il lavoro agentico. Composer 2.5 costa <strong>~8× meno</strong> di Opus 4.7 a parità di qualità — il price-performance è la strategia, non un dettaglio.</div>
+      </div>
+      <div class="card highlight">
+        <div class="name">SpaceX × Colossus</div>
+        <div class="desc">Allenarli richiede una potenza enorme. Cursor era a corto di compute: ora i modelli si allenano sui supercomputer di SpaceX — e il prossimo è in training da zero con <strong>~10× più calcolo</strong> su Colossus 2.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 26px;">
+      <strong>Editor, agenti in cloud, Origin, e ora modelli propri su scala SpaceX.</strong> Cursor non sta costruendo un tool: sta costruendo una <em>fabbrica di software</em> — tu dai la direzione, gli agenti eseguono.
+    </div>
+
+    <p class="mono" style="font-size: 11px; color: var(--subtle); margin-top: 14px;">Annunci dal Compile 26 &middot; keynote di Michael Truell, 16 giugno 2026.</p>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>11 / 22</span></div>
+  </div>
+  <aside class="notes">Il "non è un giocattolo" della serata: Cursor costruisce i propri modelli (Composer) e li allena sui supercomputer di SpaceX (Colossus), con ~10× più compute per il prossimo. Messaggio: fanno sul serio, il price-performance è la strategia. Chiudi con "fabbrica di software": è il riassunto della parte due. (Nota: niente cifre sull'acquisizione — è solo indiscrezione di stampa.)</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 12 — Il contesto è il nuovo carburante (light, punchy)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Una cosa da ricordare</div>
+    </div>
+
+    <div style="margin: auto 0;">
+      <div class="eyebrow accent">Se stasera ricordi una sola frase</div>
+      <div class="spacer-m"></div>
+      <h2 style="font-size: 58px; font-weight: 700; line-height: 1.14; max-width: 1020px;">
+        I migliori agenti non scrivono di più.<br>
+        Leggono di più, <span class="accent">prima</span> di scrivere.
+      </h2>
+      <div class="spacer-l"></div>
+      <div class="row" style="gap: 48px; align-items: baseline;">
+        <div class="kpi-inline"><span class="n">90%+</span><span class="l">dei token sono input:<br>contesto, non output.</span></div>
+        <div class="kpi-inline"><span class="n">46×</span><span class="l">righe AI al giorno dei power user<br>rispetto alla mediana.</span></div>
+      </div>
+      <p class="body" style="color: var(--muted); margin-top: 26px; max-width: 940px;">
+        Il vantaggio non è «usare l'AI». È strutturare il lavoro perché gli agenti possano eseguirlo: regole, docs, test, esempi. Il contesto è un vantaggio competitivo.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>12 / 22</span></div>
+  </div>
+  <aside class="notes">La frase da far rimanere in testa. Pausa dopo "prima di scrivere". I due numeri: 90%+ dei token è input (leggere &gt; scrivere) e 46× il divario dei power user. Conclusione: il talento nuovo è preparare il contesto, non digitare in fretta. Chiude la parte due.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 13 — Divider · Cursor Community (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Parte tre</div>
+    </div>
+
+    <img class="cube-wm bottom" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <div class="mono" style="font-size: 14px; color: var(--subtle); letter-spacing: 0.2em;">03 / 04</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white); font-size: 100px;">Cursor<br>Community.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 700px;">
+        Sviluppatori che si incontrano in tutto il mondo per costruire, conoscersi e condividere.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>13 / 22</span></div>
+  </div>
+  <aside class="notes">Cambio di tono: dalla strategia alle persone. Questa serata è un nodo di una rete molto più grande. Prepara il globo.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 14 — Globe + stats (dark) · mount #cursor-globe
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Nel mondo</div>
+    </div>
+
+    <div class="globe-layout">
+      <div class="globe-copy">
+        <h2 class="title-l" style="color: var(--white); font-size: 50px;">Una rete globale.</h2>
+        <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+        <div class="kpi-list">
+          <div class="kpi-row"><span class="n">800+</span><span class="l">Eventi organizzati</span></div>
+          <div class="kpi-row"><span class="n">200+</span><span class="l">Città</span></div>
+          <div class="kpi-row"><span class="n">80+</span><span class="l">Paesi</span></div>
+          <div class="kpi-row"><span class="n">300+</span><span class="l">Ambassador</span></div>
+        </div>
+        <p class="mono" style="font-size: 12px; color: var(--subtle); letter-spacing: 0.08em; margin-top: 22px;">
+          Cafe Cursor · Workshop · Meetup · Hackathon
+        </p>
+      </div>
+
+      <div class="globe-mount">
+        <div id="cursor-globe" role="img" aria-label="Globo 3D della community Cursor nel mondo"></div>
+        <div class="globe-caption mono">Roma è uno dei nodi di questa rete.</div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>14 / 22</span></div>
+  </div>
+  <aside class="notes">La slide "wow". Lascia girare il globo qualche secondo in silenzio. Poi i numeri: 800+ eventi, 200+ città, 80+ paesi, 300+ ambassador. Indica Roma sul globo: "noi siamo questo puntino qui". I quattro formati (Cafe, Workshop, Meetup, Hackathon) = inviti a tornare.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 15 — Megastat · ~500 candidature/settimana (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">La community sta esplodendo</div>
+    </div>
+
+    <div style="margin-top: 92px;">
+      <div class="megastat">
+        <div class="num">~500</div>
+        <div class="copy">
+          <h2>Candidature ambassador<br>ogni settimana.</h2>
+          <div class="src">Persone che vogliono organizzare la community Cursor nella propria città. Ogni singola settimana.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 48px;">
+      <strong>Tradotto:</strong> c'è una community enorme online — il forum è dove si parla davvero. Ma il posto migliore resta questo: eventi locali, faccia a faccia. A Roma siete già nel posto giusto.
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>15 / 22</span></div>
+  </div>
+  <aside class="notes">Numero ad effetto: ~500 candidature ambassador a settimana. Dillo lentamente. È la prova che non è una nicchia: è un movimento. Gancio: forum.cursor.com per le discussioni (Discord poco attivo), eventi locali su Luma, ambassador su cursor.com/community. Poi passa agli ospiti.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 16 — Divider · Ospiti (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Parte quattro</div>
+    </div>
+
+    <img class="cube-wm bottom" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <div class="mono" style="font-size: 14px; color: var(--subtle); letter-spacing: 0.2em;">04 / 04</div>
+      <div class="spacer-m"></div>
+      <h1 class="title-xl" style="color: var(--white); font-size: 104px;">I nostri ospiti.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+      <p class="lede" style="color: var(--subtle); max-width: 680px;">
+        Tre voci della community. Diamo loro il palco.
+      </p>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>16 / 22</span></div>
+  </div>
+  <aside class="notes">Passaggio di testimone. Energia su, sei tu che presenti loro. Tieni le intro brevi: nome, ruolo, e una frase su cosa diranno.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 17 — Ospite · Sunita Rao (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Ospite · 01</div>
+    </div>
+
+    <div class="speaker">
+      <div class="speaker-id">
+        <div class="monogram">SR</div>
+        <div class="speaker-name">Sunita Rao</div>
+        <div class="speaker-role">Community Leader · Cursor</div>
+        <div class="chip">Cursor</div>
+      </div>
+      <div class="speaker-body">
+        <div class="eyebrow accent">Di cosa ci parlerà</div>
+        <div class="spacer-s"></div>
+        <ul class="speaker-points">
+          <li>Come nasce e cresce la community Cursor nel mondo.</li>
+          <li>Il programma ambassador: come funziona e come entrarci.</li>
+          <li>Cosa rende speciale questa rete di persone.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>17 / 22</span></div>
+  </div>
+  <aside class="notes">Presenta Sunita con calore. È la voce "ufficiale" della community Cursor. Lasciale spazio: il programma ambassador e il "perché" della community sono temi suoi. Poi cedi il microfono.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 18 — Ospite · Giacomo Barbieri (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Ospite · 02</div>
+    </div>
+
+    <div class="speaker">
+      <div class="speaker-id">
+        <div class="monogram">GB</div>
+        <div class="speaker-name">Giacomo Barbieri</div>
+        <div class="speaker-role">Team1</div>
+        <div class="chip">blockchain + AI</div>
+      </div>
+      <div class="speaker-body">
+        <div class="eyebrow accent">Di cosa ci parlerà</div>
+        <div class="spacer-s"></div>
+        <ul class="speaker-points">
+          <li>Cos'è Team1 e cosa sta costruendo.</li>
+          <li>Perché blockchain e AI funzionano meglio insieme.</li>
+          <li>Casi d'uso concreti, già oggi.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>18 / 22</span></div>
+  </div>
+  <aside class="notes">Ponte naturale dal tema agenti: blockchain + AI è "fiducia + automazione". Lascia che Giacomo entri nei casi d'uso di Team1. Tu fai solo da gancio.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 19 — Ospite · Marco Galluccio (light)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_LIGHT.png" alt="Cursor">
+      </div>
+      <div class="eyebrow">Ospite · 03</div>
+    </div>
+
+    <div class="speaker">
+      <div class="speaker-id">
+        <div class="monogram">MG</div>
+        <div class="speaker-name">Marco Galluccio</div>
+        <div class="speaker-role">ETH Rome</div>
+        <div class="chip">Community</div>
+      </div>
+      <div class="speaker-body">
+        <div class="eyebrow accent">Di cosa ci parlerà</div>
+        <div class="spacer-s"></div>
+        <ul class="speaker-points">
+          <li>Un saluto dalla community di ETH Rome.</li>
+          <li>Costruire ponti tra le community di Roma.</li>
+          <li>Cosa bolle in pentola in città.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>19 / 22</span></div>
+  </div>
+  <aside class="notes">Marco porta i saluti di ETH Rome: è il momento "ponte tra community". Breve, caloroso. Sottolinea che a Roma c'è un ecosistema, non eventi isolati.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 20 — Closing (dark)
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Grazie</div>
+    </div>
+
+    <img class="cube-wm" src="brand/General Logos/Cube/PNG/CUBE_2D_DARK.png" alt="">
+
+    <div style="margin: auto 0;">
+      <h1 class="title-xl" style="font-size: 116px; color: var(--white);">Grazie.<br>Ora costruiamo.</h1>
+      <div class="accent-rule" style="background: var(--paper); opacity: .8; margin: 28px 0;"></div>
+      <div style="font-size: 30px; font-weight: 700; color: var(--white); line-height: 1.25; max-width: 900px;">
+        Non «vibe» a caso.<br>
+        <span style="color: var(--subtle); font-weight: 400;">Dirigere agenti, con metodo.</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px; display: flex; justify-content: space-between; align-items: end;">
+      <div>
+        <div style="font-size: 18px; font-weight: 600; color: var(--white);">Nick Mascaro</div>
+        <div style="font-size: 13px; color: var(--subtle); margin-top: 4px;">Cursor Community Roma · grazie agli ospiti e a tutti voi</div>
+      </div>
+      <div style="text-align: right; max-width: 420px;">
+        <div class="eyebrow" style="color: var(--subtle);">Resta in contatto</div>
+        <div class="mono" style="font-size: 13px; color: var(--subtle); margin-top: 4px; line-height: 1.55;">
+          forum.cursor.com<br>
+          luma.com/cursorcommunity
+        </div>
+        <div style="font-size: 12px; color: var(--subtle); margin-top: 10px; line-height: 1.45;">
+          Il forum è dove si parla davvero.<br>
+          Gli eventi locali — come oggi — valgono di più.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>20 / 22</span></div>
+  </div>
+  <aside class="notes">Chiusura. Ripeti la frase-bussola: "non vibe a caso, dirigere agenti con metodo." Inviti: iscrivetevi al forum (forum.cursor.com) — è molto più attivo del Discord. Tenete d'occhio gli eventi locali su Luma; il valore vero è qui, in sala, non in una chat. Candidatevi come ambassador su cursor.com/community. Ringrazia gli ospiti per nome. Sorridi, hai finito.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 21 — Find your team (dark) · carte squadre
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark slide-team-cards">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Networking</div>
+    </div>
+
+    <div class="team-cards-header">
+      <h2 class="title-l" style="font-size: 40px; color: var(--white);">Find your team.</h2>
+      <p class="lede" style="margin-top: 6px; color: var(--subtle); max-width: 560px; font-size: 15px;">
+        Scegli la tua squadra — poi costruiamo insieme.
+      </p>
+    </div>
+
+    <div class="team-cards-grid">
+      <div class="team-cards-row">
+        <img class="team-card" src="cards/gladiatori.svg" alt="I Gladiatori">
+        <img class="team-card" src="cards/centurioni.svg" alt="I Centurioni">
+        <img class="team-card" src="cards/aquiliferi.svg" alt="Gli Aquiliferi">
+        <img class="team-card" src="cards/senatori.svg" alt="I Senatori">
+      </div>
+      <div class="team-cards-row team-cards-row--center">
+        <img class="team-card" src="cards/vestali.svg" alt="Le Vestali">
+        <img class="team-card" src="cards/architetti.svg" alt="Gli Architetti">
+        <img class="team-card" src="cards/filosofi.svg" alt="I Filosofi">
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>21 / 22</span></div>
+  </div>
+  <aside class="notes">Networking icebreaker: invita tutti a scegliere una carta squadra (Gladiatori, Centurioni, Aquiliferi, Senatori, Vestali, Architetti, Filosofi). Non serve spiegare tutte — lascia che si avvicinino e scelgano. Poi passa al QR.</aside>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SLIDE 22 — Scan to join / build (dark) · CTA finale
+     ════════════════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="slide dark">
+    <div class="chrome">
+      <div class="brand-lockup">
+        <img class="logo" src="brand/General Logos/Lockup Horizontal/PNG/LOCKUP_HORIZONTAL_2D_DARK.png" alt="Cursor">
+      </div>
+      <div class="eyebrow" style="color: var(--subtle);">Scan to join</div>
+    </div>
+
+    <div class="cta-build">
+      <div class="cta-build-copy">
+        <div class="eyebrow accent" style="color: var(--paper); opacity: .85;">Tocca a voi</div>
+        <div class="spacer-m"></div>
+        <h1 class="title-xl" style="color: var(--white); font-size: 82px;">Costruiamo<br>qualcosa. Insieme.</h1>
+        <div class="accent-rule" style="background: var(--paper); opacity: .8;"></div>
+        <p class="lede" style="color: var(--subtle); max-width: 560px;">
+          Inquadra il QR, entra nella board e proponi la tua idea. La sviluppiamo qui — stasera, con Cursor.
+        </p>
+        <div class="mono" style="margin-top: 24px; line-height: 1.6;">
+          <span style="font-size: 15px; letter-spacing: 0.3em; font-weight: 700; color: var(--white);">RQUBKMFB</span><br>
+          <span style="font-size: 12px; color: var(--subtle);">hack.vibefy.net/brainstorm/RQUBKMFB</span>
+        </div>
+      </div>
+
+      <div class="cta-build-qr">
+        <div class="qr-card">
+          <img src="qr-build.png" alt="QR — hack.vibefy.net/brainstorm/RQUBKMFB">
+          <div class="qr-caption">SCAN TO JOIN · RQUBKMFB</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer"><span class="left">Cursor Community Meetup · Roma · 27 giu 2026</span><span>22 / 22</span></div>
+  </div>
+  <aside class="notes">Slide finale: lasciala sullo schermo durante il networking. Invito chiaro — inquadrate il QR, entrate nella board (hack.vibefy.net/brainstorm), proponete un'idea e costruiamola stasera con Cursor. È il momento "ora tocca a voi". Codice: RQUBKMFB.</aside>
+</section>
+
+</div>
+</div>
+
+<!-- Reveal.js bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0,
+    minScale: 0.2,
+    maxScale: 2.0,
+    controls: true,
+    controlsLayout: "edges",
+    progress: true,
+    slideNumber: false,
+    history: true,
+    hash: true,
+    transition: "slide",
+    transitionSpeed: "default",
+    backgroundTransition: "fade",
+    plugins: (typeof RevealNotes !== 'undefined') ? [ RevealNotes ] : [],
+  });
+
+  const overviewBtn   = document.getElementById('btn-overview');
+  const fullscreenBtn = document.getElementById('btn-fullscreen');
+
+  overviewBtn.addEventListener('click', () => Reveal.toggleOverview());
+  Reveal.on('overviewshown', () => overviewBtn.setAttribute('aria-pressed', 'true'));
+  Reveal.on('overviewhidden', () => overviewBtn.setAttribute('aria-pressed', 'false'));
+
+  fullscreenBtn.addEventListener('click', () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    fullscreenBtn.setAttribute('aria-pressed', document.fullscreenElement ? 'true' : 'false');
+    lockLandscapeWhenPossible();
+  });
+
+  async function lockLandscapeWhenPossible() {
+    if (!document.fullscreenElement || !screen.orientation?.lock) return;
+    try {
+      await screen.orientation.lock('landscape');
+    } catch {
+      // Some mobile browsers only allow orientation changes from OS controls.
+    }
+  }
+
+  function syncDeckBackground() {
+    const current = Reveal.getCurrentSlide();
+    const isDark = !!current && !!current.querySelector('.slide.dark');
+    document.documentElement.classList.toggle('deck-dark', isDark);
+  }
+  Reveal.on('ready', syncDeckBackground);
+  Reveal.on('slidechanged', syncDeckBackground);
+</script>
+
+<!-- Globo 3D della community (self-contained, nessuna dipendenza esterna) -->
+<script src="globe.js"></script>
+</body>
+</html>
