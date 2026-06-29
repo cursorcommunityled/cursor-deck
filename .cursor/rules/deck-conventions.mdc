@@ -15,8 +15,8 @@ This is a Reveal.js deck template. Pure HTML + CSS, no build step.
 - **Don't add `npm install` dependencies** unless the user explicitly
   asks. `serve` is fetched on demand via `npx`.
 - **Don't change Reveal.js options** (`Reveal.initialize({…})`) without
-  applying the same change to both `template/` and
-  `examples/cursor-nexo-security/`.
+  applying the same change to `template/`, `examples/cursor-nexo-security/`,
+  and `examples/cursor-model-training/`.
 
 ## Slide chrome — required on every slide
 
@@ -33,11 +33,12 @@ Every `<section>` must contain:
 When you add or remove a slide: **update the `NN / MM` counter on every
 following slide.** And update the `MM` total on every slide.
 
-## Two decks
+## Decks
 
 - `template/` — the generic starter. Edit this.
 - `examples/cursor-nexo-security/` — historical reference deck. Don't
   edit unless the user explicitly asks for a correction.
+- `examples/cursor-model-training/` — tutorial example (editable).
 
 ## Color and typography
 
