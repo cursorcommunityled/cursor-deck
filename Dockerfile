@@ -16,7 +16,12 @@ COPY template            ./template
 COPY examples            ./examples
 COPY index.html          ./index.html
 
-EXPOSE 80
+RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx /var/run \
+ && sed -i 's/listen       80;/listen       8080;/' /etc/nginx/conf.d/default.conf \
+ && sed -i 's/listen  \[::\]:80;/listen  [::]:8080;/' /etc/nginx/conf.d/default.conf
+
+USER nginx
+EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://127.0.0.1/ >/dev/null || exit 1
+  CMD wget -qO- http://127.0.0.1:8080/ >/dev/null || exit 1
