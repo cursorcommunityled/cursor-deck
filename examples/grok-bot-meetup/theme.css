@@ -216,57 +216,62 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
 }
-/* Purple hero: standalone cleaned char PNG (true alpha). Height-only sizing. */
-.cover-cluster .b-purple {
-  height: 520px;
-  left: 480px;
-  top: 220px;
-  width: auto;
-  clip-path: none;
-}
-/* Cover cluster: real img blobs with natural aspect ratio */
+/* Match Google Slides cover composition (scaled to 1100x700) */
 .cover-blob {
   position: absolute;
   width: auto;
-  max-width: none;
-  max-height: none;
+  height: auto;
   object-fit: contain;
   pointer-events: none;
 }
-.cover-cluster .b-pink {
-  left: 640px;
-  top: 72px;
-  height: 150px;
+.cover-cluster .b-purple {
+  left: 390px;
+  top: 300px;
+  height: 480px;
   width: auto;
-  transform: rotate(-6deg);
+  z-index: 1;
+}
+.cover-cluster .b-pink {
+  left: 560px;
+  top: 70px;
+  height: 145px;
+  width: auto;
+  transform: rotate(-8deg);
+  z-index: 3;
 }
 .cover-cluster .b-blue {
-  left: 980px;
-  top: -10px;
-  height: 200px;
+  left: 900px;
+  top: -20px;
+  height: 210px;
   width: auto;
+  z-index: 2;
 }
 .cover-cluster .b-orange {
-  left: 820px;
-  top: 210px;
-  height: 170px;
+  left: 780px;
+  top: 200px;
+  height: 175px;
   width: auto;
-  transform: rotate(6deg);
+  transform: rotate(8deg);
+  z-index: 3;
 }
 .cover-cluster .b-green {
-  left: 1080px;
-  top: 280px;
-  height: 280px;
+  left: 980px;
+  top: 270px;
+  height: 270px;
   width: auto;
+  z-index: 2;
 }
 .cover-cluster .b-teal {
-  left: 1140px;
-  top: 590px;
-  height: 100px;
+  left: 1020px;
+  top: 600px;
+  height: 95px;
   width: auto;
-  transform: rotate(-10deg);
+  transform: rotate(-12deg);
+  z-index: 3;
 }
+
 /* 02 — accelerating curve, with labels just above their actual milestones. */
 .maturity-wrap {
   position: absolute;
