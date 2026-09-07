@@ -204,7 +204,7 @@ body {
   height: 28px;
 }
 .spacexai .spacex-mark {
-  height: 18px;
+  height: 22px;
   width: auto;
   object-fit: contain;
 }
@@ -217,15 +217,13 @@ body {
   inset: 0;
   pointer-events: none;
 }
-/* Crop the purple hero directly from the supplied 1280 × 656 reference.
-   Scale the whole raster uniformly to 700px high, then clip its hero region.
-   The angled upper-right crop excludes the neighboring orange satellite.
-   Its baked-in eyes and bottom-edge crop match the reference without a new asset. */
+/* Purple hero: standalone cleaned char PNG (true alpha). Height-only sizing. */
 .cover-cluster .b-purple {
-  height: 700px;
-  left: -116px;
-  top: 0;
-  clip-path: polygon(38.9% 50.3%, 66.4% 50.3%, 74.3% 67.1%, 74.3% 100%, 38.9% 100%);
+  height: 520px;
+  left: 480px;
+  top: 220px;
+  width: auto;
+  clip-path: none;
 }
 /* Cover cluster: real img blobs with natural aspect ratio */
 .cover-blob {
@@ -237,32 +235,37 @@ body {
   pointer-events: none;
 }
 .cover-cluster .b-pink {
-  left: 626px;
-  top: 88px;
-  height: 137px;
-  transform: rotate(-8deg);
+  left: 640px;
+  top: 72px;
+  height: 150px;
+  width: auto;
+  transform: rotate(-6deg);
 }
 .cover-cluster .b-blue {
-  left: 890px;
-  top: -20px;
-  height: 210px;
+  left: 980px;
+  top: -10px;
+  height: 200px;
+  width: auto;
 }
 .cover-cluster .b-orange {
-  left: 811px;
-  top: 212px;
-  height: 157px;
-  transform: rotate(8deg);
+  left: 820px;
+  top: 210px;
+  height: 170px;
+  width: auto;
+  transform: rotate(6deg);
 }
 .cover-cluster .b-green {
-  left: 930px;
-  top: 294px;
-  height: 250px;
+  left: 1080px;
+  top: 280px;
+  height: 280px;
+  width: auto;
 }
 .cover-cluster .b-teal {
-  left: 970px;
-  top: 600px;
-  height: 90px;
-  transform: rotate(-13deg);
+  left: 1140px;
+  top: 590px;
+  height: 100px;
+  width: auto;
+  transform: rotate(-10deg);
 }
 /* 02 — accelerating curve, with labels just above their actual milestones. */
 .maturity-wrap {
