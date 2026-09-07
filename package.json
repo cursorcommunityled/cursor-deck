@@ -10,6 +10,7 @@
     "present:example-training": "npx --yes serve@14 examples/cursor-model-training -l 4321 --no-port-switching",
     "present:example-crea-vender": "npx --yes serve@14 examples/cursor-crea-vender -l 4321 --no-port-switching",
     "present:meetup-roma": "npx --yes serve@14 examples/cursor-meetup-roma -l 4321 --no-port-switching",
+    "present:grok-bot": "npx --yes serve@14 examples/grok-bot-meetup -l 4321 --no-port-switching",
     "open":             "open http://localhost:4321 || xdg-open http://localhost:4321"
   }
 }
