@@ -34,6 +34,9 @@ Aider, Devin, Jules, JetBrains Junie, Zed, and anything else that reads
 | [`examples/cursor-crea-vender/`](examples/cursor-crea-vender/) | **Example.** Create & sell with Cursor. |
 | [`examples/grok-bot-meetup/`](examples/grok-bot-meetup/) | **Grok Bot Community.** Cream / lavender 15-slide host deck (Malta + reusable). Own theme + assets — not the Cursor latte chrome. |
 
+![Grok Bot Community cover](examples/grok-bot-meetup/preview/slide-01.png)
+
+
 Cursor-branded decks share `theme.css` (latte cream / warm-grey) and
 `cursor-brand-assets/` (symlinked as each deck's `brand/`). The Grok Bot deck
 keeps its own `theme.css` and `assets/` (Grok mark, SpaceX wordmark, character blobs).

@@ -7,6 +7,68 @@ Coffee Circus Porto) and reusable for any Grok Bot Community night.
 English, **15 slides**. Pure HTML + Reveal.js 5.1.0, no build step — same stack
 as the other decks in this repo.
 
+## Preview
+
+Fresh captures of the live deck (`preview/slide-01.png` … `slide-15.png`).
+
+![Cover — Meet your new AI teammates](preview/slide-01.png)
+
+### 02 · AI Maturity Curve
+
+![Slide 02](preview/slide-02.png)
+
+### 03 · Today everyone spends time on routine work
+
+![Slide 03](preview/slide-03.png)
+
+### 04 · Introducing
+
+![Slide 04](preview/slide-04.png)
+
+### 05 · The challenge with most agents
+
+![Slide 05](preview/slide-05.png)
+
+### 06 · Demo
+
+![Slide 06](preview/slide-06.png)
+
+### 07 · Why customers choose Grok Bot
+
+![Slide 07](preview/slide-07.png)
+
+### 08 · Available now
+
+![Slide 08](preview/slide-08.png)
+
+### 09 · Getting Started: Give each Bot a job
+
+![Slide 09](preview/slide-09.png)
+
+### 10 · Put your GTM strategy into action
+
+![Slide 10](preview/slide-10.png)
+
+### 11 · Ship more, with less coordination overhead
+
+![Slide 11](preview/slide-11.png)
+
+### 12 · Keep the company running at breakneck pace
+
+![Slide 12](preview/slide-12.png)
+
+### 13 · Security
+
+![Slide 13](preview/slide-13.png)
+
+### 14 · AI is evolving fast
+
+![Slide 14](preview/slide-14.png)
+
+### 15 · Finale
+
+![Slide 15](preview/slide-15.png)
+
 ## Visual system
 
 High-fidelity to the Grok Bot Community Google Slides template (cream / white /
@@ -75,6 +137,7 @@ Print to PDF: open `http://localhost:4321/?print-pdf`, then Chrome → Print →
 | `assets/spacex-wordmark.png` | SpaceX wordmark used in the footer lockup. |
 | `assets/chars/*.png` | Template-cut character blobs with alpha (preferred on slides). |
 | `assets/blobs/*.png` | Earlier Amsterdam-family alpha cuts (reference). |
+| `preview/` | PNG screenshots of all 15 slides (1100×700) for this README. |
 | `brand/` | Symlink → Cursor brand assets. **Unused** by this deck — Grok marks live under `assets/`. |
 
 ## Sources
