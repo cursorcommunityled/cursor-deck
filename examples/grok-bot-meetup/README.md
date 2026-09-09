@@ -1,21 +1,39 @@
-# Grok Bot Meetup · Malta — deck
+# Grok Bot Community — deck
 
-Host deck for the **Grok Bot Meetup Malta**, Thursday 17 September 2026, 18:00–21:30,
-at Coffee Circus Porto (149 Triq D'Argens, Ta' Xbiex). Host: Nick Mascaro.
-English, 10 slides. Pure HTML + Reveal.js 5.1.0, no build step — same stack as the
-other decks in this repo.
+Host / community deck for **Grok Bot**: cream paper, lavender accents, character
+blobs, and the official Grok mark. Built for the Malta meetup (Thu 17 Sep 2026,
+Coffee Circus Porto) and reusable for any Grok Bot Community night.
+
+English, **15 slides**. Pure HTML + Reveal.js 5.1.0, no build step — same stack
+as the other decks in this repo.
 
 ## Visual system
 
-Grok Bot brand (Figma thumbnails + Luma Amsterdam cover): solid black `#000`, white type,
-secondary `#777`, blob accents teal / pink / orange / blue / green. Chrome uses the official
-Grok Bot circle mark (`assets/grok-mark-128.png`) + "Grok Bot" wordmark — not Cursor lockups.
+High-fidelity to the Grok Bot Community Google Slides template (cream / white /
+lavender), **not** the Cursor latte theme and **not** the black Amsterdam Luma look.
 
-Blob art in `assets/blobs/` is cut with alpha from the official family sheet
-(`assets/blob-family-sheet.png`, same art as `assets/cover-ref.png`). `white.png` is the family's
-circle rebuilt whole; `blue.png` is cut on its right edge and `green.png` on right + bottom in the
-source art, so those must bleed off the slide. The small accent "bot dots" in cards and pipeline
-pills are a CSS mask traced from `assets/grok-mark-512.png`.
+| Token | Value | Use |
+| --- | --- | --- |
+| `--paper` | `#FBF9F4` | cream slides |
+| `--cover-paper` | `#FFFBF5` | cover |
+| `--ink` | `#050505` | titles |
+| `--body` | `#85888E` | secondary copy |
+| Accents | lavender / pink / orange / blue / green / teal | blobs + highlights |
+
+**Chrome**
+
+- Top-left brand lockup: official Grok circle mark (`assets/grok-mark-on-light-128.png` on cream, `assets/grok-mark-128.png` on dark) + **Grok Bot** wordmark — never the Cursor cube.
+- Bottom-left: SpaceX wordmark (`assets/spacex-wordmark.png`), not a text fake.
+- Footer label: `Grok Bot Community` · `NN / 15`.
+
+**Characters**
+
+Raster blobs in `assets/chars/` (purple hero, pink tri, blue cloud, orange tear,
+green dome, teal square). Cover composition mirrors the template cluster
+(`cover-cluster` + absolute placement). Do not stretch with `object-fit: cover`;
+keep `object-fit: contain` and `width: auto`.
+
+Older alpha cuts in `assets/blobs/` remain for reference; slides use `chars/`.
 
 ## Run
 
@@ -30,42 +48,50 @@ Print to PDF: open `http://localhost:4321/?print-pdf`, then Chrome → Print →
 
 | # | Slide | Layout |
 | --- | --- | --- |
-| 01 | Cover | black · title-xl · blob family |
-| 02 | Tonight, in five parts | black · row-step agenda |
-| 03 | What is Grok Bot? | black · quoted definition + callout |
-| 04 | Always-on teammates | black · row-3 cards |
-| 05 | What real work looks like | black · row-4 cards |
-| 06 | One Bot is useful. A group chat of them is a team. | black · pipeline + quote |
-| 07 | Routines: show it once, it repeats | black · row-3 cards |
-| 08 | Why tonight | black · punchy headline + orange blob |
-| 09 | How the evening runs | black · 2 × row-3 left-stripe cards |
-| 10 | Give a Bot a job. Tonight. | black · closer CTA + blob family → luma.com/grok-malta · x.ai/bot |
+| 01 | Meet your new AI teammates | cream cover · title + char cluster |
+| 02 | AI Maturity Curve | white · curve / stages |
+| 03 | Today everyone spends time on routine work | white · problem framing |
+| 04 | Introducing | product intro |
+| 05 | The challenge with most agents | cream · challenge |
+| 06 | Demo | title beat |
+| 07 | Why customers choose Grok Bot | white · reasons |
+| 08 | Available now | availability |
+| 09 | Getting Started: Give each Bot a job | cream · jobs |
+| 10 | Put your GTM strategy into action | white · GTM use cases |
+| 11 | Ship more, with less coordination overhead | white · eng / ops |
+| 12 | Keep the company running at breakneck pace | white · ops pace |
+| 13 | Security | cream · security |
+| 14 | AI is evolving fast | cream · closing thesis |
+| 15 | (finale) | Grok mark closer |
 
 ## What's in this folder
 
-| File | What it is |
+| Path | What it is |
 | --- | --- |
-| `index.html` | The 10-slide deck. Speaker notes live in each slide's `<aside class="notes">`. |
-| `theme.css` | Grok Bot theme: black / `#777` tokens, blob accent cycling, float + rise-in motion, bot-dot mask. |
-| `assets/` | `grok-mark-128.png` / `grok-mark-512.png` (official mark), `blobs/*.png` (alpha cutouts used on slides 1, 8, 10), reference art (`cover-ref.png`, `blob-family-sheet.png`, `meetup-malta-square-ref.png`). The top-level `blob-*.png`, `mark-crop.png` and `cover-amsterdam-style.png` are superseded crops, no longer referenced. |
-| `brand/` | Symlink → `../../cursor-brand-assets`. Not used by this deck. |
+| `index.html` | 15-slide deck. Speaker notes in each `<aside class="notes">`. |
+| `theme.css` | Cream / white Community theme, chrome, char-blob, cover-cluster, progress bar. |
+| `assets/grok-mark-*.png` | Official Grok circle mark (light + dark variants). |
+| `assets/grok-mark-on-light-*.png` | Black-circle mark for cream / white slides. |
+| `assets/spacex-wordmark.png` | SpaceX wordmark used in the footer lockup. |
+| `assets/chars/*.png` | Template-cut character blobs with alpha (preferred on slides). |
+| `assets/blobs/*.png` | Earlier Amsterdam-family alpha cuts (reference). |
+| `brand/` | Symlink → Cursor brand assets. **Unused** by this deck — Grok marks live under `assets/`. |
 
 ## Sources
 
-- Product wording is quoted from xAI's launch post **"Introducing Grok Bot"** (x.ai/news, 11 August 2026)
-  and the product page **x.ai/bot**. The "real work" examples on slide 5 are the internal uses xAI
-  described at launch (sales research, CRM upkeep, invoice processing from Gmail, bug reproduction).
-- Event details (date, time, venue, format, ticket types) come from the Luma page **luma.com/grok-malta**.
-- No statistics, prices, or seat counts are printed on the slides. Availability and pricing change;
-  the speaker notes point people to x.ai/bot instead of quoting numbers.
+- Product framing follows xAI's **Introducing Grok Bot** post and **x.ai/bot**.
+- Event details for the Malta night: **luma.com/grok-malta**.
+- Visual reference: Grok Bot Community Google Slides template + Figma
+  `Grok Bot thumbnails [temp]` (`3PcKyybEoc6SAqysnCb5HA`).
+- No live seat counts or pricing on slides — those change; point people to Luma / x.ai/bot.
 
 ## Editing notes
 
-- Slides are sequential `<section>` blocks. The footer counter is `NN / 10` — **bump it on every slide**
-  if you add or remove one.
-- Every slide is black. Slides 1, 8 and 10 carry `has-blobs`; blob positions are inline on each `<img class="blob">`
-  (`--dur / --delay / --amp / --rot` drive the float).
-- Slide 9 deliberately has no clock times. Put the real run-of-show in the speaker notes so the deck
-  doesn't go stale if timings shift.
-- No QR yet. If you want one on the closer, generate it for `luma.com/grok-malta`, drop it in this folder,
-  and reuse the `.qr-card` block from `examples/cursor-meetup-roma/index.html` slide 22.
+- Slides are sequential `<section>` blocks. Footer counters are `NN / 15` —
+  **bump every slide** if you add or remove one.
+- Prefer `assets/chars/*.png` + `class="char-blob"` over CSS eye blobs or masks.
+- Cover cluster positions are intentional; tweak `theme.css` `.cover-cluster` /
+  `.b-*` rules rather than stretching the PNGs.
+- Keep Grok marks and the SpaceX wordmark as images. Do not swap in Cursor logos.
+- No QR on the closer yet. Reuse `.qr-card` from `examples/cursor-meetup-roma/`
+  if you want one for `luma.com/grok-malta`.

@@ -25,31 +25,39 @@ Aider, Devin, Jules, JetBrains Junie, Zed, and anything else that reads
 
 ## What's in here
 
-Three decks, side by side:
+| Folder | What it is |
+| --- | --- |
+| [`template/`](template/) | **Fork this.** Generic 10-slide starter covering every layout the Cursor theme ships with. |
+| [`examples/cursor-nexo-security/`](examples/cursor-nexo-security/) | **Reference.** *Cursor × NEXO · Sesión 03 — Código Seguro con Cursor* (April 2026). |
+| [`examples/cursor-model-training/`](examples/cursor-model-training/) | **Example.** How ML models are trained — data, loss, optimization, training loop. |
+| [`examples/cursor-meetup-roma/`](examples/cursor-meetup-roma/) | **Community.** First Cursor Community Meetup in Rome (June 2026), Italian, 21 slides. |
+| [`examples/cursor-crea-vender/`](examples/cursor-crea-vender/) | **Example.** Create & sell with Cursor. |
+| [`examples/grok-bot-meetup/`](examples/grok-bot-meetup/) | **Grok Bot Community.** Cream / lavender 15-slide host deck (Malta + reusable). Own theme + assets — not the Cursor latte chrome. |
 
-| Folder                                  | What it is                                                              |
-| --------------------------------------- | ----------------------------------------------------------------------- |
-| [`template/`](template/)                | **Fork this.** Generic 10-slide starter covering every layout the theme ships with. |
-| [`examples/cursor-nexo-security/`](examples/cursor-nexo-security/) | **Reference.** Real deck used for *Cursor × NEXO · Sesión 03 — Código Seguro con Cursor* (April 2026). |
-| [`examples/cursor-model-training/`](examples/cursor-model-training/) | **Example.** Walkthrough on how ML models are trained — data, loss, optimization, and the training loop. |
-
-Both share the same `theme.css` (latte cream / warm-grey palette) and the
-same `cursor-brand-assets/` (symlinked from each deck's `brand/` folder).
+Cursor-branded decks share `theme.css` (latte cream / warm-grey) and
+`cursor-brand-assets/` (symlinked as each deck's `brand/`). The Grok Bot deck
+keeps its own `theme.css` and `assets/` (Grok mark, SpaceX wordmark, character blobs).
 
 ## Quick start
 
 ```bash
-git clone git@github.com:mascarock/cursor-deck.git
+git clone git@github.com:cursorcommunityled/cursor-deck.git
 cd cursor-deck
 
 # generic template
 npm run present:template
 
-# the NEXO webinar example
+# NEXO webinar example
 npm run present:example
 
-# how to train models (tutorial example)
+# how to train models
 npm run present:example-training
+
+# Rome community meetup
+npm run present:meetup-roma
+
+# Grok Bot Community (cream / character blobs)
+npm run present:grok-bot
 ```
 
 Open <http://localhost:4321>. No `npm install` required — `serve` is
@@ -99,23 +107,22 @@ cursor-deck/
 ├── README.md
 ├── package.json
 ├── docs/preview.png
-├── cursor-brand-assets/             # shared Cursor logos (cube, lockup, wordmark, …)
-├── template/                        # ← fork this
+├── cursor-brand-assets/             # shared Cursor logos
+├── template/                        # ← fork this (Cursor theme)
 │   ├── brand → ../cursor-brand-assets
 │   ├── index.html
 │   ├── theme.css
 │   └── README.md
 └── examples/
-    ├── cursor-nexo-security/        # ← real deck, kept verbatim
-    │   ├── brand → ../../cursor-brand-assets
-    │   ├── index.html
-    │   ├── theme.css
-    │   ├── partner.png
-    │   └── README.md
-    └── cursor-model-training/       # ← tutorial example (how training works)
-        ├── brand → ../../cursor-brand-assets
+    ├── cursor-nexo-security/
+    ├── cursor-model-training/
+    ├── cursor-meetup-roma/
+    ├── cursor-crea-vender/
+    └── grok-bot-meetup/             # Grok Bot Community (own theme + assets/)
         ├── index.html
-        └── theme.css
+        ├── theme.css
+        ├── assets/                  # grok marks, spacex wordmark, chars/
+        └── README.md
 ```
 
 ## Brand assets
@@ -125,9 +132,14 @@ lockups, cube, wordmark, app icons, avatars). Use them in line with
 [Cursor's brand guidelines](https://cursor.com). Intended for ambassador
 talks and Cursor community events.
 
+The **Grok Bot** example does not use those assets. Its marks and character
+art live under `examples/grok-bot-meetup/assets/` — see that folder's README.
+
 ## License
 
 MIT for the template code. Cursor brand assets retain Cursor's terms of use.
+Grok Bot / SpaceX marks in the Grok example remain subject to xAI / SpaceX terms.
+
 
 ---
 
